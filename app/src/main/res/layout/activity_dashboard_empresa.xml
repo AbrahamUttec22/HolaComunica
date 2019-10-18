@@ -1,0 +1,813 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_10"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:screenOrientation="portrait">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/world_map"
+            android:tint="@color/overlay_light_30" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarD"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:contentInsetStartWithNavigation="0dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:subtitleTextAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+            app:subtitleTextColor="@color/grey_10" />
+
+    </RelativeLayout>
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-36dp"
+        android:scrollbars="none"
+        android:scrollingCache="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:descendantFocusability="blocksDescendants"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="35dp" />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_middle"
+                android:layout_marginTop="@dimen/spacing_middle"
+                android:layout_marginRight="@dimen/spacing_middle"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:visibility="visible"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_middle">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_mxlarge" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <android.support.design.widget.FloatingActionButton
+                                    android:id="@+id/MiPerfilE"
+                                    android:layout_width="match_parent"
+
+                                    android:layout_height="match_parent"
+                                    android:clickable="true"
+                                    android:saveEnabled="false"
+                                    android:tint="@android:color/white"
+                                    app:backgroundTint="@color/amber_A400"
+                                    app:elevation="0dp"
+                                    app:fabSize="mini"
+                                    app:srcCompat="@drawable/ic_person"
+
+                                    />
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/MiPerfilE2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:saveEnabled="false"
+                                android:text="Mi Perfil"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <android.support.design.widget.FloatingActionButton
+                                    android:id="@+id/PanelUsuariosE"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:clickable="true"
+                                    android:saveEnabled="false"
+                                    android:tint="@android:color/white"
+                                    app:backgroundTint="@color/yellow_600"
+                                    app:elevation="0dp"
+                                    app:fabSize="mini"
+                                    app:rippleColor="@android:color/white"
+                                    app:srcCompat="@drawable/ic_peoples" />
+
+                                <TextView
+                                    android:id="@+id/EmpresaUsuariosN"
+                                    android:layout_width="15dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="top|end"
+                                    android:layout_marginTop="0dp"
+                                    android:background="@drawable/ic_button_circle"
+                                    android:text="0"
+                                    android:textAlignment="center"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                    android:textColor="@color/grey_3"
+                                    android:textSize="9dp"
+                                    android:tint="@color/colorAccentDark" />
+
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/PanelUsuariosE2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:saveEnabled="false"
+                                android:text="Usuarios"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <android.support.design.widget.FloatingActionButton
+                                android:id="@+id/AdministradorActividadesAdminE"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:saveEnabled="false"
+                                android:tint="@android:color/white"
+                                app:backgroundTint="@color/purple_400"
+                                app:elevation="0dp"
+                                app:fabSize="mini"
+                                app:rippleColor="@android:color/white"
+                                app:srcCompat="@drawable/ic_admin_ob" />
+
+                            <TextView
+                                android:id="@+id/AdministradorActividadesAdminE2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:saveEnabled="false"
+                                android:text="Administrar Actividades"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <android.support.design.widget.FloatingActionButton
+                                    android:id="@+id/AgregarEventosE"
+                                    android:layout_width="wrap_content"
+
+                                    android:layout_height="wrap_content"
+                                    android:clickable="true"
+                                    android:saveEnabled="false"
+                                    android:tint="@android:color/white"
+                                    app:backgroundTint="@color/light_green_400"
+                                    app:elevation="0dp"
+                                    app:fabSize="mini"
+                                    app:rippleColor="@android:color/white"
+                                    app:srcCompat="@drawable/ic_events" />
+                            </FrameLayout>
+
+
+                            <TextView
+                                android:id="@+id/AgregarEventosE2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:saveEnabled="false"
+                                android:text="Agregar Evento"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_mlarge" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <android.support.design.widget.FloatingActionButton
+                                    android:id="@+id/VerEventosE"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:clickable="true"
+                                    android:tint="@android:color/white"
+                                    app:backgroundTint="@color/light_green_400"
+                                    app:elevation="0dp"
+                                    app:fabSize="mini"
+                                    app:rippleColor="@android:color/white"
+                                    app:srcCompat="@drawable/ic_ver_ob" />
+
+                                <TextView
+                                    android:id="@+id/EmpresaVerEventoN"
+                                    android:layout_width="15dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="top|end"
+                                    android:layout_marginTop="0dp"
+                                    android:background="@drawable/ic_button_circle"
+                                    android:text="0"
+                                    android:textAlignment="center"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                    android:textColor="@color/grey_3"
+                                    android:textSize="9dp"
+                                    android:tint="@color/colorAccentDark" />
+
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/VerEventosE2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:text="Ver eventos"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <android.support.design.widget.FloatingActionButton
+                                    android:id="@+id/AdministrarEventosE"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:clickable="true"
+                                    android:saveEnabled="false"
+                                    android:tint="@android:color/white"
+                                    app:backgroundTint="@color/light_green_400"
+                                    app:elevation="0dp"
+                                    app:fabSize="mini"
+                                    app:rippleColor="@android:color/white"
+                                    app:srcCompat="@drawable/ic_admin_ob" />
+
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/AdministrarEventosE2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:saveEnabled="false"
+                                android:text="Administrar Eventos"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <android.support.design.widget.FloatingActionButton
+                                    android:id="@+id/AgregarEncuestaE"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:clickable="true"
+                                    android:saveEnabled="false"
+                                    android:tint="@android:color/white"
+                                    app:backgroundTint="@color/cyan_800"
+                                    app:elevation="0dp"
+                                    app:fabSize="mini"
+                                    app:rippleColor="@android:color/white"
+                                    app:srcCompat="@drawable/ic_add_ob" />
+
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/AgregarEncuestaE2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:saveEnabled="false"
+                                android:text="Agregar Encuesta"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <android.support.design.widget.FloatingActionButton
+                                    android:id="@+id/VerEncuestasE"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:clickable="true"
+                                    android:tint="@android:color/white"
+                                    app:backgroundTint="@color/cyan_800"
+                                    app:elevation="0dp"
+                                    app:fabSize="mini"
+                                    app:rippleColor="@android:color/white"
+                                    app:srcCompat="@drawable/ic_ver_ob" />
+
+                                <TextView
+                                    android:id="@+id/EmpresaVerEncuestaN"
+                                    android:layout_width="15dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="top|end"
+                                    android:layout_marginTop="0dp"
+                                    android:background="@drawable/ic_button_circle"
+                                    android:text="0"
+                                    android:textAlignment="center"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                    android:textColor="@color/grey_3"
+                                    android:textSize="9dp"
+                                    android:tint="@color/colorAccentDark" />
+
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/VerEncuestasE2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:text="Ver encuestas"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_mlarge" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <android.support.design.widget.FloatingActionButton
+                                    android:id="@+id/AdministrarEncuestasE"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:clickable="true"
+                                    android:saveEnabled="false"
+                                    android:tint="@android:color/white"
+                                    app:backgroundTint="@color/cyan_800"
+                                    app:elevation="0dp"
+                                    app:fabSize="mini"
+                                    app:rippleColor="@android:color/white"
+                                    app:srcCompat="@drawable/ic_admin_ob" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/AdministrarEncuestasE2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:saveEnabled="false"
+                                android:text="Administrar Encuestas"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <android.support.design.widget.FloatingActionButton
+                                android:id="@+id/AgregarAnuncioE"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:saveEnabled="false"
+                                android:tint="@android:color/white"
+                                app:backgroundTint="@color/deep_orange_A400"
+                                app:elevation="0dp"
+                                app:fabSize="mini"
+                                app:rippleColor="@android:color/white"
+                                app:srcCompat="@drawable/ic_add_ob" />
+
+                            <TextView
+                                android:id="@+id/AgregarAnuncioE2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:saveEnabled="false"
+                                android:text="Agregar Anuncio"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <android.support.design.widget.FloatingActionButton
+                                    android:id="@+id/VerAnuncioE"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:clickable="true"
+                                    android:tint="@android:color/white"
+                                    app:backgroundTint="@color/deep_orange_A400"
+                                    app:elevation="0dp"
+                                    app:fabSize="mini"
+                                    app:rippleColor="@android:color/white"
+                                    app:srcCompat="@drawable/ic_ver_ob" />
+
+                                <TextView
+                                    android:id="@+id/EmpresaVerAnuncioN"
+                                    android:layout_width="15dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="top|end"
+                                    android:layout_marginTop="0dp"
+                                    android:background="@drawable/ic_button_circle"
+                                    android:text="0"
+                                    android:textAlignment="center"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                    android:textColor="@color/grey_3"
+                                    android:textSize="9dp"
+                                    android:tint="@color/colorAccentDark" />
+
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/VerAnuncioE2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:text="Ver anuncios"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <android.support.design.widget.FloatingActionButton
+                                android:id="@+id/AdministrarAnunciosE"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:saveEnabled="false"
+                                android:tint="@android:color/white"
+                                app:backgroundTint="@color/deep_orange_A400"
+                                app:elevation="0dp"
+                                app:fabSize="mini"
+                                app:rippleColor="@android:color/white"
+                                app:srcCompat="@drawable/ic_admin_ob" />
+
+                            <TextView
+                                android:id="@+id/AdministrarAnunciosE2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:saveEnabled="false"
+                                android:text="Administrar Anuncios"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_mxlarge" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <android.support.design.widget.FloatingActionButton
+                                    android:id="@+id/PagosEmpresa"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:clickable="true"
+                                    android:saveEnabled="false"
+                                    android:tint="@android:color/white"
+                                    app:backgroundTint="@color/light_green_900"
+                                    app:elevation="0dp"
+                                    app:fabSize="mini"
+                                    app:rippleColor="@android:color/white"
+                                    app:srcCompat="@drawable/ic_payment" />
+
+
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/PagosEmpresa2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:saveEnabled="false"
+                                android:text="Pagos"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <android.support.design.widget.FloatingActionButton
+                                android:id="@+id/GenerarQRE"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:saveEnabled="false"
+                                android:tint="@android:color/white"
+                                app:backgroundTint="@color/indigo_600"
+                                app:elevation="0dp"
+                                app:fabSize="mini"
+                                app:rippleColor="@android:color/white"
+                                app:srcCompat="@drawable/ic_qr" />
+
+                            <TextView
+                                android:id="@+id/GenerarQRE2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:saveEnabled="false"
+                                android:text="Generar QR"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <android.support.design.widget.FloatingActionButton
+                                android:id="@+id/EstatusChecadorE"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:saveEnabled="false"
+                                android:tint="@android:color/white"
+                                app:backgroundTint="@color/indigo_600"
+                                app:elevation="0dp"
+                                app:fabSize="mini"
+                                app:rippleColor="@android:color/white"
+                                app:srcCompat="@drawable/ic_estatus_checador" />
+
+                            <TextView
+                                android:id="@+id/EstatusChecadorE2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:saveEnabled="false"
+                                android:text="Estatus del checador"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <android.support.design.widget.FloatingActionButton
+                                android:id="@+id/CerrarSesionE"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:tint="@android:color/white"
+                                app:backgroundTint="@color/teal_A400"
+                                app:elevation="0dp"
+                                app:fabSize="mini"
+                                app:rippleColor="@android:color/white"
+                                app:srcCompat="@drawable/ic_sign_out" />
+
+                            <TextView
+                                android:id="@+id/CerrarSesionE2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:text="Cerrar Sesión"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_mxlarge" />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_middle"
+                android:layout_marginTop="@dimen/spacing_middle"
+                android:layout_marginRight="@dimen/spacing_middle"
+                android:layout_marginBottom="@dimen/spacing_large"
+                android:visibility="visible"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/spacing_large">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tituloCodigoE"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/grey_60" />
+
+                        <TextView
+                            android:id="@+id/MostrarCodigoE"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/green_400"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/spacing_xmedium"
+                        android:paddingTop="@dimen/spacing_small"
+                        android:paddingRight="@dimen/spacing_xmedium"
+                        android:paddingBottom="@dimen/spacing_small">
+
+                        <Button
+                            android:id="@+id/InfoCodigoEmpresaE"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/btn_rounded_indigo_outline"
+                            android:paddingLeft="@dimen/spacing_xmedium"
+                            android:paddingTop="@dimen/spacing_small"
+                            android:paddingRight="@dimen/spacing_xmedium"
+                            android:paddingBottom="@dimen/spacing_small"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                            android:textColor="@android:color/black" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>
