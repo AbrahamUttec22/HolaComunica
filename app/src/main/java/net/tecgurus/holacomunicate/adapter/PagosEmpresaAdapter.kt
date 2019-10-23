@@ -46,7 +46,7 @@ class PagosEmpresaAdapter(val context: Context, val layout: Int, val list: List<
         val estatus = "${list[position].estatus}"
         val fecha_pago = "${list[position].fecha_pago}"
         val hora_pago = "${list[position].hora_pago}"
-        val id = "${list[position].id}"
+        //val id = "${list[position].id}"
         val id_empresa = "${list[position].id_empresa}"
         val id_pago_paypal = "${list[position].id_pago_paypal}"
         val monto = "${list[position].monto}"//no mostrar

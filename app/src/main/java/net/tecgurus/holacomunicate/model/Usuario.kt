@@ -2,23 +2,6 @@ package net.tecgurus.holacomunicate.model
 
 import android.support.annotation.Keep
 
-/**
- * To set private is very important because firebase not deserializable on cloud firestore
- * @author Abraham Casas Aguilar
- * class Usuario(private var email: String = "",
-private var ubicacion: String = "",
-private var name: String = "",
-private var rol: String = "",//direccion,edad,telefono campos nuevos
-private var direccion: String = "",
-private var edad: String = "",
-private var telefono: String = "",
-private var id: String = "",
-private var id_empresa: String = "",
-private var token: String = "",
-private var estatus: String = "",
-private var uid: String = "") {
-
- */
 @Keep
 class Usuario(var email: String = "",
               var ubicacion: String = "",

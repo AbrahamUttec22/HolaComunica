@@ -16,8 +16,6 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import net.tecgurus.holacomunicate.R
-//import com.material.components.adapter.ActividadesAdapter
-//import com.material.components.adapter.ActividadesVerAdapter
 import net.tecgurus.holacomunicate.adapter.UserAdapter
 import net.tecgurus.holacomunicate.DashboarActivity
 import net.tecgurus.holacomunicate.model.Actividades
@@ -130,95 +128,6 @@ class UserActivity : AppCompatActivity() {
 
     }
 
-    /**
-     * @param changes
-     * aqui se hace el recorrido de la coleccion de cloudfirestore
-     */
-    /*private fun addChanges(changes: List<DocumentChange>) {
-        val itemUsuario = ArrayList<Usuario>()//lista local de una sola instancia
-        var con = 0
-        for (change in changes) {
-            con++
-            itemUsuario.add(change.document.toObject(Usuario::class.java))//ir agregando los datos a la lista
-        }//una ves agregado los campos mandar a llamar la vista
-        if (con == 0) {
-            iconDefaultUsuarios.setVisibility(View.VISIBLE)
-        } else {
-            iconDefaultUsuarios.setVisibility(View.INVISIBLE)
-        }
-
-        usuarioList = itemUsuario
-        adapter = UserAdapter(this, R.layout.list_view_usuario, usuarioList)
-        listView.adapter = adapter
-        listView.onItemClickListener = object : AdapterView.OnItemClickListener {
-            override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val id_usuario = view!!.textemail.text.toString()
-                showDialog(id_usuario)
-            }
-        }
-    }
-*/
-    /* private fun showDialog(id_usuario: String) {
-         //the header from dialog
-         val dialog = Dialog(this)
-         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE) // before
-         dialog.setContentView(R.layout.dialog_actividades_usuarios)
-         dialog.setCancelable(true)
-         val lp = WindowManager.LayoutParams()
-         lp.copyFrom(dialog.window!!.attributes)
-         lp.width = WindowManager.LayoutParams.MATCH_PARENT
-         lp.height = WindowManager.LayoutParams.MATCH_PARENT
-         var listViewActividadesVe = (dialog.findViewById<View>(R.id.listViewActividadesVer) as ListView)
-         var verver = (dialog.findViewById<View>(R.id.iconDefaultActividadver) as TextView)
-         //in this code I get the information on cloud firestore
-         val itemActividad = ArrayList<Actividades>()//lista local de una sola instancia
-         usuarioList.forEach {
-             if (it.id == id_usuario) {
-                 val resultado = actividadesCollection.whereEqualTo("id_usuario", id_usuario)
-                 //beggin with consult
-                 resultado.get().addOnCompleteListener(OnCompleteListener<QuerySnapshot> { task ->
-                     if (task.isSuccessful) {
-                         var con=0
-                         for (document in task.result!!) {
-                             con++
-                             val actividadName = document.get("actividad").toString()
-                             val correo = document.get("correo").toString()
-                             val status = document.get("estatus").toString()
-                             val id = document.get("id").toString()
-                             val id_usuario = document.get("id_usuario").toString()
-                             val terminada = document.get("fecha_hora_terminada").toString()
-                             val asignada = document.get("fecha_hora_asignada").toString()
-
-                             //
-                             var actividad = Actividades()
-                             actividad.actividad = actividadName
-                             actividad.correo = correo
-                             actividad.estatus = status
-                             actividad.id = id
-                             actividad.id_usuario = id_usuario
-                             actividad.fecha_hora_terminada=terminada
-                             actividad.fecha_hora_asignada=asignada
-                             itemActividad.add(actividad)
-                         }//end for
-                         if (con == 0) {
-                             verver.setVisibility(View.VISIBLE)
-                             verver.text="No se le han asignado actividades a este usuario"
-                         } else {
-                             verver.setVisibility(View.INVISIBLE)
-                         }
-
-                         actividadesList = itemActividad
-                         adapterActividad = ActividadesVerAdapter(this, R.layout.list_view_actividades_ver, actividadesList)
-                         listViewActividadesVe.adapter = adapterActividad
-                     }
-                 })//end for expression lambdas this very cool
-             }
-         }//for each
-
-         dialog.show()
-         dialog.window!!.attributes = lp
-     }
- */
 
     /**
      * initToolbar(header)

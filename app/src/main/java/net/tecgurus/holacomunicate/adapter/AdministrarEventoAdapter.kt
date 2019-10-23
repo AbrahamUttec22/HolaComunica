@@ -322,5 +322,5 @@ class AdministrarEventoViewHolder(view: View) {
     val actualizarTwo: TextView = view.btnActualizarEventoTwo
     val eliminar: ImageButton = view.btnEliminarEvento
     val eliminarTwo: TextView = view.btnEliminarEventoTwo
-    val imgEvento: CircularImageView = view.imageEventoAdmin
+    //val imgEvento: CircularImageView = view.imageEventoAdmin
 }

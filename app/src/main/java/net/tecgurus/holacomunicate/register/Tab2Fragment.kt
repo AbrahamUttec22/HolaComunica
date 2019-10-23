@@ -200,26 +200,93 @@ class Tab2Fragment : Fragment() {
         })
     }
 
+
+    /**
+     *  Reutilizare este metodo para validar que su plan cumpla con las restricciones
+    si el plan es gratuito no se pueden registrar usuarios
+    si el plan es prueba inicial, se pueden registrar los que sean necesarios
+    si el plan es mensual o anual validar que plan tiene y cual es el limite  de usuarios que se pueden agregar
+     */
     private fun validCode(email: String, password: String, usuario: Usuario, view: View) {
         val resultado = empresasCollection.whereEqualTo("id_empresa", usuario.id_empresa)
         //beggin with consult
         resultado.get().addOnCompleteListener(OnCompleteListener<QuerySnapshot> { task ->
             if (task.isSuccessful) {
                 var con = 0
+                var estatus = ""   //mencion al los 4 tipos de estatus del plan mencionados en los comentarios
+                var tipo_plan = "" //mencion a la cantidad de usuarios que se pueden registrar en su plan
+                var id_empresa = ""
                 for (document in task.result!!) {
                     con++
+                    estatus = document.get("estatus").toString()
+                    tipo_plan = document.get("estatus").toString()
+                    id_empresa = document.get("id_empresa").toString()
                 }
+
                 if (con == 0) {
                     status = true
                     view.txtCodigoEmpresa.error = "Codigo incorrecto"
                 } else {
-                    signUpByEmail(email, password, usuario, view)
+                    //here the validation
+                    when (estatus) {
+                        "gratuita" -> {
+                            //mostrar un dialog de que no se puede registrar xd
+                        }
+                        "pruebainicial" -> {
+                            signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
+                        }
+                        "anual" -> {
+                            val empleado = usuariosCollection.whereEqualTo("id_empresa", id_empresa)
+                            //beggin with consult
+                            empleado.get().addOnCompleteListener(OnCompleteListener<QuerySnapshot> { task ->
+                                if (task.isSuccessful) {
+                                    var contador = 0
+                                    for (document in task.result!!) {
+                                        contador++
+                                    }
+                                    if (tipo_plan.equals("Usuarios: 1 a 5")) {
+                                        if (contador >= 0 && contador <= 5) {
+                                            signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
+                                        } else {
+                                            //mostrar mensaje de que no se puede registrar por validacione
+                                        }
+                                    }
+                                    if (tipo_plan.equals("Usuarios: 5 a 20")) {
+                                        if (contador >= 6 && contador <= 20) {
+                                            signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
+                                        } else {
+                                            //mostrar mensaje de que no se puede registrar por validacione
+                                        }
+                                    }
+                                    if (tipo_plan.equals("Usuarios: 20 a 50")) {
+                                        if (contador >= 21 && contador <= 50) {
+                                            signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
+                                        } else {
+                                            //mostrar mensaje de que no se puede registrar por validacione
+                                        }
+                                    }
+                                    if (tipo_plan.equals("Usuarios: 50 a 100")) {
+                                        if (contador >= 51 && contador <= 100) {
+                                            signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
+                                        } else {
+                                            //mostrar mensaje de que no se puede registrar por validacione
+                                        }
+                                    }
+                                } else {
+                                    Log.w("saasas", "Error getting documents.", task.exception)
+                                }
+                            })//end for expression lambdas this very cool
+                        }
+                        else -> {
+                        }
+                    }
                 }
             } else {
                 Log.w("EXCEPTION", "Error getting documents.", task.exception)
             }
         })//end for expression lambdas this very cool
     }
+
 
     /**
      * @param name

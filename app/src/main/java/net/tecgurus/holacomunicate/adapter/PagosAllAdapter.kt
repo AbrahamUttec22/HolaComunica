@@ -7,14 +7,12 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.alejandrolora.finalapp.inflate
-import com.bumptech.glide.Glide
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import net.tecgurus.holacomunicate.model.Pagos
 import kotlinx.android.synthetic.main.list_view_pagos_all.view.*
-import kotlinx.android.synthetic.main.list_view_panel_empresas.view.*
 
 /**
  * @author Abraham
@@ -48,7 +46,7 @@ class PagosAllAdapter(val context: Context, val layout: Int, val list: List<Pago
         val estatus = "${list[position].estatus}"
         val fecha_pago = "${list[position].fecha_pago}"
         val hora_pago = "${list[position].hora_pago}"
-        val id = "${list[position].id}"
+       // val id = "${list[position].id}"
         val id_empresa = "${list[position].id_empresa}"
         val id_pago_paypal = "${list[position].id_pago_paypal}"
         val monto = "${list[position].monto}"//no mostrar

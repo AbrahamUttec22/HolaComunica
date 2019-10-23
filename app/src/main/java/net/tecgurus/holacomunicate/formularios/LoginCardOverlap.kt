@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.AppCompatButton
 import com.alejandrolora.finalapp.isValidEmail
@@ -240,60 +239,6 @@ class LoginCardOverlap : AppCompatActivity() {
         }
     }
 
-    //I need valid the access
-    private fun showDialogAbout() {
-        val dialog = Dialog(this)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE) // before
-        dialog.setContentView(R.layout.dialog_code)
-        dialog.setCancelable(true)
-        val lp = WindowManager.LayoutParams()
-        lp.copyFrom(dialog.window!!.attributes)
-        lp.width = WindowManager.LayoutParams.WRAP_CONTENT
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT
-        (dialog.findViewById<View>(R.id.bt_Cancel) as AppCompatButton).setOnClickListener { v ->
-            dialog.dismiss()
-        }
 
-        (dialog.findViewById<View>(R.id.bt_Accept) as AppCompatButton).setOnClickListener { v ->
-            val code = (dialog.findViewById<View>(R.id.txtCodeAccess) as EditText).text.toString()
-            val editText = (dialog.findViewById<View>(R.id.txtCodeAccess) as EditText)
-            if (code.isNullOrEmpty()) {
-                editText?.error = "Ingresa el codigo"
-            } else {
-                validCode(code, dialog)
-            }
-
-        }
-        dialog.show()
-        dialog.window!!.attributes = lp
-
-    }
-
-    /**
-     * @param code
-     * @return void
-     */
-    private fun validCode(code: String, dialog: Dialog) {
-        val resultado = codeCollection.whereEqualTo("acceso", code)
-        //beggin with consult
-        resultado.get().addOnCompleteListener(OnCompleteListener<QuerySnapshot> { task ->
-            if (task.isSuccessful) {
-                for (document in task.result!!) {
-                    val acceso = document.get("acceso").toString()
-                    if (acceso.equals(code)) {
-                        goToActivity<SignUpActivity> {
-                            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        }
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-                    } else {
-                        val editText = (dialog.findViewById<View>(R.id.txtCodeAccess) as EditText)
-                        editText.error = "Codigo incorrecto"
-                    }
-                }
-            } else {
-                Log.w("EXCEPTION", "Error getting documents.", task.exception)
-            }
-        })//end for expression lambdas this very cool
-    }
 
 }

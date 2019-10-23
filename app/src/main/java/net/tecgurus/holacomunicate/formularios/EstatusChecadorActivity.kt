@@ -32,13 +32,10 @@ import java.lang.Exception
 import android.os.Environment
 import android.util.Log
 import com.alejandrolora.finalapp.goToActivity
-import com.alejandrolora.finalapp.toast
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.QuerySnapshot
-//import com.material.components.adapter.ActividadesAdapter
 import net.tecgurus.holacomunicate.DashboarActivity
 import kotlinx.android.synthetic.main.activity_encuesta.listView
-import kotlinx.android.synthetic.main.activity_estatus_checador.*
 
 /**
  * @author Abraham Casas Aguilar
@@ -132,21 +129,6 @@ class EstatusChecadorActivity : AppCompatActivity() {
     }
 
 
-    /**
-     * @param changes
-     * aqui se hace el recorrido de la coleccion de cloudfirestore
-     */
-    private fun addChanges(changes: List<DocumentChange>) {
-        val itemChecador = ArrayList<Checador>()//lista local de una sola instancia
-        for (change in changes) {
-            itemChecador.add(change.document.toObject(Checador::class.java))//ir agregando los datos a la lista
-        }//una ves agregado los campos mandar a llamar la vista
-        eventoList = itemChecador
-        Log.w("LISTA", eventoList.toString())
-        adapter = EstatusChecadorAdapter(this, R.layout.list_view_estatus_checador, eventoList)
-        //listView.btnCerrarEncuesta
-        listView.adapter = adapter
-    }//end for handler
 
     private fun addMarksListenerTWO() {
         var sharedPreference = getSharedPreferences("shared_login_data", Context.MODE_PRIVATE)

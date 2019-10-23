@@ -19,12 +19,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import net.tecgurus.holacomunicate.R
 import net.tecgurus.holacomunicate.adapter.PagosAllAdapter
-import net.tecgurus.holacomunicate.adapter.PanelEmpresasAdapter
-import net.tecgurus.holacomunicate.model.Empresa
 import net.tecgurus.holacomunicate.model.Pagos
 import net.tecgurus.holacomunicate.utils.Tools
 import kotlinx.android.synthetic.main.activity_pagos_all.*
-import kotlinx.android.synthetic.main.activity_panel_empresas.*
 import java.util.ArrayList
 
 /**

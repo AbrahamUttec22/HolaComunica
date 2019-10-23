@@ -30,7 +30,6 @@ class ProcesoFragment : Fragment() {
     private val actividadesCollection: CollectionReference
     private var swipeRefreshLayout: SwipeRefreshLayout? = null
     // private val channelId = "com.material.components.activity"
-    private val channelId = "com.example.vicky.notificationexample"
     private val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     //init the val for get the collection the Firebase with cloud firestore
@@ -64,21 +63,6 @@ class ProcesoFragment : Fragment() {
         })
     }
 
-    private fun addMarksListener() {
-        //var sharedPreference = getSharedPreferences("shared_login_data", Context.MODE_PRIVATE)
-        // var id_empresa = sharedPreference.getString("id_empresa", "")
-        var email = mAuth.currentUser!!.email.toString()
-        actividadesCollection.whereEqualTo("correo", email).addSnapshotListener { snapshots, error ->
-            if (error == null) {
-                val changes = snapshots?.documentChanges
-                if (changes != null) {
-                    listenerDb()
-                }
-            } else {
-                Toast.makeText(context, "Ha ocurrido un error intenta de nuevo", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
 
     private fun listenerDb() {
         var email = mAuth.currentUser!!.email.toString()

@@ -144,13 +144,6 @@ class PerfilEmpresaActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * @param direccion
-     */
-    private fun isValid(nombre: String, giro: String, telefono: String, direccion: String): Boolean {
-        return !nombre.isNullOrEmpty() &&
-                !giro.isNullOrEmpty() && !telefono.isNullOrEmpty() && !direccion.isNullOrEmpty()
-    }
 
     private fun updateInformation(name: String, giro: String, direccion: String, telefono: String) {
         empresaCollection.document(idDocument).update("nombre", name, "giro", giro, "direccion", direccion, "telefono", telefono).addOnSuccessListener {

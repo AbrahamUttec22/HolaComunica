@@ -18,7 +18,6 @@ class MyAdapter(private var myContext: Context, fm: FragmentManager, internal va
     //declare val for save the collection
     private val usuariosCollection: CollectionReference
 
-    private val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     //init the val for get the collection the Firebase with cloud firestore
     init {

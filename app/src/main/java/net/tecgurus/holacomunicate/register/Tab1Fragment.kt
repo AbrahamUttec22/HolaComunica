@@ -50,8 +50,6 @@ class Tab1Fragment : Fragment(), View.OnClickListener {
     override fun onClick(position: View?) {
     }
 
-    private val TAG = "Tab1Fragment"
-    private var btnTEST: Button? = null
     //declare val for save the collection
     private val marksCollection: CollectionReference
     private val adminCollection: CollectionReference
@@ -108,6 +106,8 @@ class Tab1Fragment : Fragment(), View.OnClickListener {
                         val fecha_vencimiento = dfVencimiento.format(calendar.getTime()).toString()
 
                         empresa.fecha_registro = formattedDate
+                        empresa.id = ""
+                        empresa.estado = "1"
                         empresa.nombre = name
                         empresa.correo = email
                         empresa.telefono = telefono
@@ -237,6 +237,10 @@ class Tab1Fragment : Fragment(), View.OnClickListener {
         empresa.token = ""
         //add the collection and save the User, this is validated
         marksCollection.add(empresa).addOnSuccessListener {
+            marksCollection.document(it.id).update("id", it.id).addOnSuccessListener {
+            }.addOnFailureListener {
+                Toast.makeText(context, "" + it, Toast.LENGTH_LONG).show()
+            }
             sendNotificationToPatner(empresa.nombre)
         }.addOnFailureListener {
             Toast.makeText(context, "Error guardando la empresa, intenta de nuevo", Toast.LENGTH_LONG).show()
@@ -305,15 +309,16 @@ class Tab1Fragment : Fragment(), View.OnClickListener {
         return pattern.matcher(email).matches()
     }
 
+    /* */
     /**
      * @param password
-     */
+     *//*
     fun isValidPassword(password: String): Boolean {
         // Necesita Contener -->    1 Num / 1 Minuscula / 1 Mayuscula / 1 Special / Min Caracteres 4
         val passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$"
         val pattern = Pattern.compile(passwordPattern)
         return pattern.matcher(password).matches()
-    }
+    }*/
 
     /**
      * @param password

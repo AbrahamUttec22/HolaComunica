@@ -16,7 +16,6 @@ import com.alejandrolora.finalapp.toast
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import net.tecgurus.holacomunicate.R
@@ -120,35 +119,6 @@ class EstadisticaActivity : AppCompatActivity() {
     }
 
 
-    /**
-     * @param changes
-     * aqui se hace el recorrido de la coleccion de cloudfirestore
-     */
-    private fun addChanges(changes: List<DocumentChange>) {
-        val itemUsuario = ArrayList<Encuesta>()//lista local de una sola instancia
-        var con = 0
-        for (change in changes) {
-            con++
-            itemUsuario.add(change.document.toObject(Encuesta::class.java))//ir agregando los datos a la lista
-        }//una ves agregado los campos mandar a llamar la vista
-        if (con == 0) {
-            iconDefaultEstadisticas.setVisibility(View.VISIBLE)
-        } else {
-            iconDefaultEstadisticas.setVisibility(View.INVISIBLE)
-        }
-        encuestaList = itemUsuario
-        adapter = EstadisticaAdapter(this, R.layout.list_view_estadistica, itemUsuario)
-        //listView.btnCerrarEncuesta
-        listView.adapter = adapter
-        listView.onItemClickListener = object : AdapterView.OnItemClickListener {
-            override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                view!!.btnVerResultados.setOnClickListener {
-                    val pregunta = view!!.txtPreguntaEs.text.toString()
-                    showDialog(pregunta)
-                }
-            }
-        }
-    }//end for handler
 
     private fun showDialog(pregunta: String) {
         //the header from dialog

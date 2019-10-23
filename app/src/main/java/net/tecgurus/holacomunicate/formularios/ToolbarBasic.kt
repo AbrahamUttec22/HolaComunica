@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity
 import com.alejandrolora.finalapp.goToActivity
 import com.google.firebase.auth.FirebaseAuth
 import net.tecgurus.holacomunicate.R
-import net.tecgurus.holacomunicate.formularios.LoginCardOverlap
 
 /**
  * @author Abraham

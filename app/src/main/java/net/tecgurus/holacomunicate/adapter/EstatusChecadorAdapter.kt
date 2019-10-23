@@ -46,7 +46,7 @@ class EstatusChecadorAdapter(val context: Context, val layout: Int, val list: Li
             vh = view.tag as EstatusChecadorViewHolder
         }
         val id_usuario = "${list[position].id_usuario}"
-        val id = "${list[position].id}"
+        //val id = "${list[position].id}"
         //val id_empresa = "${list[position].id_empresa}"
         val fecha = "${list[position].fecha}"
 
@@ -82,26 +82,6 @@ class EstatusChecadorAdapter(val context: Context, val layout: Int, val list: Li
 
         } catch (e: java.lang.Exception) {
         }
-
-
-        /*     val consultaChecador = checadorCollection.whereEqualTo("fecha", fecha).
-                     whereEqualTo("id_usuario", id_usuario).whereEqualTo("id_empresa", id_empresa)
-             //beggin with consult
-             consultaChecador.get().addOnCompleteListener(OnCompleteListener<QuerySnapshot> { task ->
-                 if (task.isSuccessful) {
-                     var horasEmpleado=""
-                     for (document in task.result!!) {
-                         horasEmpleado = document.get("hora").toString()+""
-                     }
-                     vh.horaChecador.text=horasEmpleado
-
-                 } else {
-                     Log.w("saasas", "Error getting documents.", task.exception)
-                 }
-             })//end for expression lambdas this very cool
-
-     */
-
         return view
     }
 

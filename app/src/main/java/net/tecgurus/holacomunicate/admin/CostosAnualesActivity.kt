@@ -17,13 +17,9 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import net.tecgurus.holacomunicate.R
-import net.tecgurus.holacomunicate.adapter.CostosAdapter
 import net.tecgurus.holacomunicate.adapter.CostosAnualesAdapter
-import net.tecgurus.holacomunicate.DashboarActivity
 import net.tecgurus.holacomunicate.model.Costos
 import net.tecgurus.holacomunicate.utils.Tools
-import kotlinx.android.synthetic.main.activity_administrar_anuncios.*
-import kotlinx.android.synthetic.main.activity_costos.*
 import kotlinx.android.synthetic.main.activity_costos_anuales.*
 import java.util.ArrayList
 

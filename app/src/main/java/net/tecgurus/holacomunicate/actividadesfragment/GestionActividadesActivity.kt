@@ -1,5 +1,4 @@
 package net.tecgurus.holacomunicate.actividadesfragment
-
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -16,7 +15,6 @@ class GestionActividadesActivity : AppCompatActivity() {
 
     var tabLayout: TabLayout? = null
     var viewPager: ViewPager? = null
-    private var exitTime: Long = 0
 
     //this class is for
     override fun onCreate(savedInstanceState: Bundle?) {

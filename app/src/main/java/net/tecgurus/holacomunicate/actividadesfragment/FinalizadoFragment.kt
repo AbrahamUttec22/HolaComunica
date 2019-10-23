@@ -6,13 +6,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
-
 import net.tecgurus.holacomunicate.R
 import net.tecgurus.holacomunicate.adapter.AFinalizadoAdapter
 import net.tecgurus.holacomunicate.model.Actividades
@@ -76,22 +74,6 @@ class FinalizadoFragment : Fragment() {
         listenerDb()
     }
 
-    private fun addMarksListener() {
-        //var sharedPreference = getSharedPreferences("shared_login_data", Context.MODE_PRIVATE)
-        // var id_empresa = sharedPreference.getString("id_empresa", "")
-        var email = mAuth.currentUser!!.email.toString()
-        actividadesCollection.whereEqualTo("correo", email).addSnapshotListener { snapshots, error ->
-            if (error == null) {
-                val changes = snapshots?.documentChanges
-                if (changes != null) {
-                    listenerDb()
-                }
-            } else {
-                Toast.makeText(context, "Ha ocurrido un error intenta de nuevo", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
     private fun listenerDb() {
         var email = mAuth.currentUser!!.email.toString()
         val consul = actividadesCollection.whereEqualTo("correo", email).whereEqualTo("estatus", "finalizado")
@@ -126,6 +108,5 @@ class FinalizadoFragment : Fragment() {
 
         }
     }
-
 
 }

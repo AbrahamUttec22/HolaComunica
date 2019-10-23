@@ -270,12 +270,7 @@ class AgregarEncuestaActivity : AppCompatActivity() {
     }
 
 
-    //front end
-    private fun actualizarInput() {
-        val formatoDeFecha = "MM/dd/yy" //In which you need put here
-        val sdf = SimpleDateFormat(formatoDeFecha, Locale.US)
-        etBirthday.setText(sdf.format(calendario.time))
-    }
+
 
     private fun initToolbar() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar

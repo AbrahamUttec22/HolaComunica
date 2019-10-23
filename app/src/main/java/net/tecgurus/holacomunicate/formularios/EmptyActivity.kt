@@ -92,16 +92,3 @@ class MainEmptyActivity : AppCompatActivity() {
     }//end for onCreate()
 
 }
-
-//guerrerog@gmail.com
-/*      if (correo.equals("eguerrerog14@gmail.com")) {
-          goToActivity<AdminDashboardActivity> {
-              flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-          }
-          overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-      } else {
-          goToActivity<DashboarActivity> {
-              flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-          }
-          overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-      }*/

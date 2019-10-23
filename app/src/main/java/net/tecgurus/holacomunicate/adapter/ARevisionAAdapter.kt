@@ -59,10 +59,10 @@ class ARevisionAAdapter(val context: Context?, val layout: Int, val list: List<A
             vh = view.tag as ActividadesViewHolderThreeAdmin
         }
 
-        val status = "${list[position].estatus}"//no mostrar
+        //val status = "${list[position].estatus}"//no mostrar
         val id = "${list[position].id}"//no mostrar id del documento
-        var correo = "${list[position].descripcion}"//no mostrar
-        var id_usuario = "${list[position].id_usuario}"//no mostrar
+        //var correo = "${list[position].descripcion}"//no mostrar
+        //var id_usuario = "${list[position].id_usuario}"//no mostrar
         var id_empresa = "${list[position].id_empresa}"//no mostrar
         var email_asigno = "${list[position].email_asigno}"//Actividad Asignada por
         var email = "${list[position].correo}"//Actividad Asignada por

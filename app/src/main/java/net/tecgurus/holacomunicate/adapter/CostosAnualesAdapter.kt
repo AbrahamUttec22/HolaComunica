@@ -14,7 +14,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import net.tecgurus.holacomunicate.R
 import net.tecgurus.holacomunicate.model.Costos
 import kotlinx.android.synthetic.main.list_view_costos_anuales.view.*
-import kotlinx.android.synthetic.main.list_view_costos_mensuales.view.*
 
 /**
  * Created by:

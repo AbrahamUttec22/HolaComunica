@@ -1,6 +1,5 @@
 package net.tecgurus.holacomunicate.admin
 
-import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -15,20 +14,13 @@ import com.alejandrolora.finalapp.toast
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import net.tecgurus.holacomunicate.R
-import net.tecgurus.holacomunicate.adapter.AdministrarAnuncioAdapter
 import net.tecgurus.holacomunicate.adapter.CostosAdapter
-import net.tecgurus.holacomunicate.DashboarActivity
-import net.tecgurus.holacomunicate.model.Anuncio
 import net.tecgurus.holacomunicate.model.Costos
 import net.tecgurus.holacomunicate.utils.Tools
-import kotlinx.android.synthetic.main.activity_administrar_anuncios.*
-import kotlinx.android.synthetic.main.activity_administrar_anuncios.listView
 import kotlinx.android.synthetic.main.activity_costos.*
-import kotlinx.android.synthetic.main.activity_encuesta.*
 import java.util.ArrayList
 
 /**

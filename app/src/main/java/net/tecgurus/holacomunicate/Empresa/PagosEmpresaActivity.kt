@@ -19,14 +19,10 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import net.tecgurus.holacomunicate.R
-import net.tecgurus.holacomunicate.adapter.PagosAllAdapter
 import net.tecgurus.holacomunicate.adapter.PagosEmpresaAdapter
-import net.tecgurus.holacomunicate.admin.AdminDashboardActivity
 import net.tecgurus.holacomunicate.DashboarActivity
 import net.tecgurus.holacomunicate.model.Pagos
 import net.tecgurus.holacomunicate.utils.Tools
-import kotlinx.android.synthetic.main.activity_card_basic.*
-import kotlinx.android.synthetic.main.activity_pagos_all.*
 import kotlinx.android.synthetic.main.activity_pagos_all.listViewPagos
 import kotlinx.android.synthetic.main.activity_pagos_empresa.*
 import java.util.ArrayList

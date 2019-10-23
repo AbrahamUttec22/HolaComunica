@@ -55,7 +55,6 @@
         <activity
             android:name=".actividadesfragment.GestionActividadesActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".utils.SplashActivity" />
         <activity
             android:name=".DashboarActivity"
             android:screenOrientation="portrait" />
@@ -71,15 +70,7 @@
         <activity
             android:name=".formularios.ForgotPasswordActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".message.PruevaActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".formularios.ActividadesActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".message.NotificacionActivity"
-            android:screenOrientation="portrait" />
+
 
         <service android:name=".message.MyFirebaseMessagingService">
             <intent-filter>
@@ -117,9 +108,7 @@
         <activity
             android:name=".formularios.SignUpActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".formularios.ImagenesActivity"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name=".formularios.AgregarAnuncioActivity"
             android:screenOrientation="portrait" />

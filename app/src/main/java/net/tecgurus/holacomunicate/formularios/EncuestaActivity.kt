@@ -1,5 +1,4 @@
 package net.tecgurus.holacomunicate.formularios
-
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -37,7 +36,6 @@ class EncuestaActivity : AppCompatActivity() {
     private lateinit var adapter: EncuestaAdapter
     private lateinit var encuestaList: List<Encuesta>
     private var swipeRefreshLayout: SwipeRefreshLayout? = null
-    private val channelId = "com.example.vicky.notificationexample"
     //declare val for save the collection
     private val encuestaCollection: CollectionReference
     private val votacionCollection: CollectionReference
@@ -160,25 +158,6 @@ class EncuestaActivity : AppCompatActivity() {
 
     }
 
-    /**
-     * @param changes
-     * aqui se hace el recorrido de la coleccion de cloudfirestore
-     */
-    private fun addChanges(changes: List<DocumentChange>) {
-        val itemUsuario = ArrayList<Encuesta>()//lista local de una sola instancia
-        var con = 0
-        for (change in changes) {
-            con++
-            itemUsuario.add(change.document.toObject(Encuesta::class.java))//ir agregando los datos a la lista
-        }//una ves agregado los campos mandar a llamar la
-        if (con == 0) {
-            iconDefaultEncuestas.setVisibility(View.VISIBLE)
-        } else {
-            iconDefaultEncuestas.setVisibility(View.INVISIBLE)
-        }
-        adapter = EncuestaAdapter(this, R.layout.list_view_encuesta, itemUsuario)
-        listView.adapter = adapter
-    }
 
     //front end
     private fun initToolbar() {

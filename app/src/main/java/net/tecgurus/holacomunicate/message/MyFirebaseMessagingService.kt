@@ -22,7 +22,6 @@ import net.tecgurus.holacomunicate.DashboarActivity
  * @author Abraham
  */
 class MyFirebaseMessagingService : FirebaseMessagingService() {
-    private val channelIdS = "com.material.tecgurus"
 
     /**
      * Called when message is received.
@@ -149,52 +148,4 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         // TODO: Implement this method to send token to your app server.
     }
 
-
-    /* private fun notifi(messageBody: String) {
-         val mBuilder: NotificationCompat.Builder
-         val mNotifyMgr = applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-         val icono = R.mipmap.ic_launcher
-         val i = Intent(this, CardWizardLight::class.java)
-         val pendingIntent = PendingIntent.getActivity(this, 0, i, 0)
-         val channelId = getString(R.string.default_notification_channel_id)
-         mBuilder = NotificationCompat.Builder(applicationContext, channelId)
-                 .setContentIntent(pendingIntent)
-                 .setSmallIcon(icono)
-                 .setContentTitle(getString(R.string.fcm_message))
-                 .setContentText(messageBody)
-                 .setVibrate(longArrayOf(100, 250, 100, 500))
-                 .setAutoCancel(true)
-         mNotifyMgr.notify(1, mBuilder.build())
-     }
- */
-
-    /*  private fun sendNotification(messageBody: String) {
-          val intent = Intent(this, MainMenu::class.java)
-          intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-          val pendingIntent = PendingIntent.getActivity(this, 0 *//* Request code *//*, intent,
-                PendingIntent.FLAG_ONE_SHOT)
-
-        val channelId = getString(R.string.default_notification_channel_id)
-        val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-        val notificationBuilder = NotificationCompat.Builder(this, channelId)
-                .setSmallIcon(R.drawable.ic_stat_ic_notification)
-                .setContentTitle(getString(R.string.fcm_message))
-                .setContentText(messageBody)
-                .setAutoCancel(true)
-                .setSound(defaultSoundUri)
-                .setContentIntent(pendingIntent)
-
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
-        // Since android Oreo notification channel is needed.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(channelId,
-                    "Channel human readable title",
-                    NotificationManager.IMPORTANCE_DEFAULT)
-            notificationManager.createNotificationChannel(channel)
-        }
-
-        notificationManager.notify(0 *//* ID of notification *//*, notificationBuilder.build())
-    }
-*/
 }

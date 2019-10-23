@@ -15,7 +15,6 @@ class GestionActividadesAActivity : AppCompatActivity() {
 
     var tabLayout: TabLayout? = null
     var viewPager: ViewPager? = null
-    private var exitTime: Long = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

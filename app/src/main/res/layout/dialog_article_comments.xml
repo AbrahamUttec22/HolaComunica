@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -33,9 +34,11 @@
                     app:civ_shadow="true"
                     app:civ_shadow_radius="0" />
 
+
                 <View
                     android:layout_width="@dimen/spacing_mlarge"
                     android:layout_height="0dp" />
+
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -301,10 +304,18 @@
 
                     </LinearLayout>
 
+                    <Button
+                        android:id="@+id/btnDarBaja"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:background="@drawable/btn_rounded_red"
+                        android:text="Dar de baja"
+                        android:textColor="@android:color/white" />
+
                 </LinearLayout>
 
             </LinearLayout>
-
 
 
         </LinearLayout>
