@@ -15,6 +15,15 @@
 
 
 
+    <string name="plan1">Con este plan puedes acceder a todas las funciones de la aplicacion, unicamente podras tener hasta 5 empleados registrados</string>
+    <string name="plan2">Con este plan puedes acceder a todas las funciones de la aplicacion, unicamente podras tener hasta 20 empleados registrados</string>
+    <string name="plan3">Con este plan puedes acceder a todas las funciones de la aplicacion, unicamente podras tener hasta 50 empleados registrados</string>
+    <string name="plan4">Con este plan puedes acceder a todas las funciones de la aplicacion, unicamente podras tener hasta 100 empleados registrados</string>
+
+
+
+
+
 
     <string name="middle_lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam efficitur ipsum in placerat molestie.  Fusce quis mauris a enim sollicitudin</string>
     <string name="medium_lorem_ipsum">Quisque imperdiet nunc at massa dictum volutpat. Etiam id orci ipsum. Integer id ex dignissim</string>

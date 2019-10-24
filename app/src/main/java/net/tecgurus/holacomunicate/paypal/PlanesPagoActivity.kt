@@ -31,6 +31,7 @@ class PlanesPagoActivity : AppCompatActivity() {
     private val userCollection: CollectionReference
     private val costosCollection: CollectionReference
     lateinit var dialog: AlertDialog
+    private var plan_adquirir=""
 
     //init the val for get the collection the Firebase with cloud firestore
     init {
@@ -40,10 +41,14 @@ class PlanesPagoActivity : AppCompatActivity() {
         costosCollection = FirebaseFirestore.getInstance().collection("Costos")
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_planes_pago)
+        val extras = intent.extras
+        if (extras != null) {
+            plan_adquirir = extras!!.getString("plan").toString()
+        }
+
         val builder = AlertDialog.Builder(this)
         val dialogView = layoutInflater.inflate(R.layout.progress_dialog, null)
         val message = dialogView.findViewById<TextView>(R.id.mensaje)
@@ -57,12 +62,10 @@ class PlanesPagoActivity : AppCompatActivity() {
         //beggin with consult
         empleado.get().addOnCompleteListener(OnCompleteListener<QuerySnapshot> { task ->
             if (task.isSuccessful) {
-                var contador = 0
                 for (document in task.result!!) {
-                    contador++
                 }
 
-                if (contador >= 0 && contador <= 5) {//ready
+                if (plan_adquirir.equals( "Usuarios: 1 a 5")) {//ready
                     var plan = "Usuarios: 1 a 5"
                     val costoConsultaMensual = costosCollection.whereEqualTo("tipo_plan", "mensual")
                             .whereEqualTo("plan", plan)
@@ -95,7 +98,7 @@ class PlanesPagoActivity : AppCompatActivity() {
                             Log.w("saasas", "Error getting documents.", task.exception)
                         }
                     })//end for expression lambdas this very cool
-                } else if (contador >= 6 && contador <= 20) {
+                } else if (plan_adquirir.equals( "Usuarios: 5 a 20")) {
                     var plan = "Usuarios: 5 a 20"
                     val costoConsultaMensual = costosCollection.whereEqualTo("tipo_plan", "mensual")
                             .whereEqualTo("plan", plan)
@@ -129,7 +132,7 @@ class PlanesPagoActivity : AppCompatActivity() {
                         }
                     })//end for expression lambdas this very cool
 
-                } else if (contador >= 21 && contador <= 50) {
+                } else if (plan_adquirir.equals( "Usuarios: 20 a 50")) {
                     var plan = "Usuarios: 20 a 50"
                     val costoConsultaMensual = costosCollection.whereEqualTo("tipo_plan", "mensual")
                             .whereEqualTo("plan", plan)
@@ -163,7 +166,7 @@ class PlanesPagoActivity : AppCompatActivity() {
                         }
                     })//end for expression lambdas this very cool
 
-                } else if (contador >= 51 && contador <= 100) {
+                } else if (plan_adquirir.equals( "Usuarios: 50 a 100")) {
                     var plan = "Usuarios: 50 a 100"
                     val costoConsultaMensual = costosCollection.whereEqualTo("tipo_plan", "mensual")
                             .whereEqualTo("plan", plan)
@@ -245,7 +248,6 @@ class PlanesPagoActivity : AppCompatActivity() {
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
 
         }
-
 
     }
 

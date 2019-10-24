@@ -172,13 +172,39 @@ class Tab2Fragment : Fragment() {
     }
 
     //handler
-//this is the dialog confirm, afther that register a new user
+    //this is the dialog confirm, afther that register a new user
     private fun showConfirmDialog() {
         mAuth.signOut()
         //the header from dialog
         val dialog = Dialog(context!!)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE) // before
         dialog.setContentView(R.layout.dialog_send_email)
+        dialog.setCancelable(true)
+        val lp = WindowManager.LayoutParams()
+        lp.copyFrom(dialog.window!!.attributes)
+        lp.width = WindowManager.LayoutParams.WRAP_CONTENT
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT
+        (dialog.findViewById<View>(R.id.bt_close) as AppCompatButton).setOnClickListener { v ->
+            dialog.dismiss()
+            val intent = Intent(context, LoginCardOverlap::class.java)
+            startActivityForResult(intent, 0)
+        }
+        dialog.show()
+        dialog.window!!.attributes = lp
+        dialog.setOnDismissListener(object : DialogInterface.OnDismissListener {
+            override fun onDismiss(p0: DialogInterface?) {
+                val intent = Intent(context, LoginCardOverlap::class.java)
+                startActivityForResult(intent, 0)
+            }
+
+        })
+    }
+
+    private fun showPlanCaducado() {
+        //the header from dialog
+        val dialog = Dialog(context!!)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE) // before
+        dialog.setContentView(R.layout.dialog_warning_registrar)
         dialog.setCancelable(true)
         val lp = WindowManager.LayoutParams()
         lp.copyFrom(dialog.window!!.attributes)
@@ -219,7 +245,7 @@ class Tab2Fragment : Fragment() {
                 for (document in task.result!!) {
                     con++
                     estatus = document.get("estatus").toString()
-                    tipo_plan = document.get("estatus").toString()
+                    tipo_plan = document.get("tipo_plan").toString()
                     id_empresa = document.get("id_empresa").toString()
                 }
 
@@ -231,6 +257,7 @@ class Tab2Fragment : Fragment() {
                     when (estatus) {
                         "gratuita" -> {
                             //mostrar un dialog de que no se puede registrar xd
+                            showPlanCaducado()
                         }
                         "pruebainicial" -> {
                             signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
@@ -245,31 +272,97 @@ class Tab2Fragment : Fragment() {
                                         contador++
                                     }
                                     if (tipo_plan.equals("Usuarios: 1 a 5")) {
-                                        if (contador >= 0 && contador <= 5) {
+                                        if (contador >= 0 && contador <= 4) {
                                             signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
                                         } else {
                                             //mostrar mensaje de que no se puede registrar por validacione
+                                            showPlanCaducado()
                                         }
                                     }
                                     if (tipo_plan.equals("Usuarios: 5 a 20")) {
-                                        if (contador >= 6 && contador <= 20) {
+                                        if (contador >= 5 && contador <= 19) {
                                             signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
                                         } else {
                                             //mostrar mensaje de que no se puede registrar por validacione
+                                            showPlanCaducado()
                                         }
                                     }
                                     if (tipo_plan.equals("Usuarios: 20 a 50")) {
-                                        if (contador >= 21 && contador <= 50) {
+                                        if (contador >= 20 && contador <= 49) {
                                             signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
                                         } else {
                                             //mostrar mensaje de que no se puede registrar por validacione
+                                            showPlanCaducado()
                                         }
                                     }
                                     if (tipo_plan.equals("Usuarios: 50 a 100")) {
-                                        if (contador >= 51 && contador <= 100) {
+                                        if (contador >= 50 && contador <= 99) {
                                             signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
                                         } else {
                                             //mostrar mensaje de que no se puede registrar por validacione
+                                            showPlanCaducado()
+                                        }
+                                    }
+                                    if (tipo_plan.equals("Usuarios: 100 a n")) {
+                                        if (contador >= 100) {
+                                            signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
+                                        } else {
+                                            //mostrar mensaje de que no se puede registrar por validacione
+                                            showPlanCaducado()
+                                        }
+                                    }
+                                } else {
+                                    Log.w("saasas", "Error getting documents.", task.exception)
+                                }
+                            })//end for expression lambdas this very cool
+                        }
+                        "mensual" -> {
+                            val empleado = usuariosCollection.whereEqualTo("id_empresa", id_empresa)
+                            //beggin with consult
+                            empleado.get().addOnCompleteListener(OnCompleteListener<QuerySnapshot> { task ->
+                                if (task.isSuccessful) {
+                                    var contador = 0
+                                    for (document in task.result!!) {
+                                        contador++
+                                    }
+                                    if (tipo_plan.equals("Usuarios: 1 a 5")) {
+                                        if (contador >= 0 && contador <= 4) {
+                                            signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
+                                        } else {
+                                            //mostrar mensaje de que no se puede registrar por validacione
+                                            showPlanCaducado()
+                                        }
+                                    }
+                                    if (tipo_plan.equals("Usuarios: 5 a 20")) {
+                                        if (contador >= 5 && contador <= 19) {
+                                            signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
+                                        } else {
+                                            //mostrar mensaje de que no se puede registrar por validacione
+                                            showPlanCaducado()
+                                        }
+                                    }
+                                    if (tipo_plan.equals("Usuarios: 20 a 50")) {
+                                        if (contador >= 20 && contador <= 49) {
+                                            signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
+                                        } else {
+                                            //mostrar mensaje de que no se puede registrar por validacione
+                                            showPlanCaducado()
+                                        }
+                                    }
+                                    if (tipo_plan.equals("Usuarios: 50 a 100")) {
+                                        if (contador >= 50 && contador <= 99) {
+                                            signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
+                                        } else {
+                                            //mostrar mensaje de que no se puede registrar por validacione
+                                            showPlanCaducado()
+                                        }
+                                    }
+                                    if (tipo_plan.equals("Usuarios: 100 a n")) {
+                                        if (contador >= 100) {
+                                            signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
+                                        } else {
+                                            //mostrar mensaje de que no se puede registrar por validacione
+                                            showPlanCaducado()
                                         }
                                     }
                                 } else {

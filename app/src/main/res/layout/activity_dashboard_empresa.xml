@@ -64,7 +64,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="435dp"
                     android:orientation="vertical"
                     android:padding="@dimen/spacing_middle">
 
@@ -200,44 +200,6 @@
                                 android:textColor="@color/grey_40" />
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <FrameLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-
-                                <android.support.design.widget.FloatingActionButton
-                                    android:id="@+id/AgregarEventosE"
-                                    android:layout_width="wrap_content"
-
-                                    android:layout_height="wrap_content"
-                                    android:clickable="true"
-                                    android:saveEnabled="false"
-                                    android:tint="@android:color/white"
-                                    app:backgroundTint="@color/light_green_400"
-                                    app:elevation="0dp"
-                                    app:fabSize="mini"
-                                    app:rippleColor="@android:color/white"
-                                    app:srcCompat="@drawable/ic_events" />
-                            </FrameLayout>
-
-
-                            <TextView
-                                android:id="@+id/AgregarEventosE2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/spacing_medium"
-                                android:saveEnabled="false"
-                                android:text="Agregar Evento"
-                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                                android:textColor="@color/grey_40" />
-                        </LinearLayout>
-
 
                     </LinearLayout>
 
@@ -263,58 +225,9 @@
                                 android:layout_height="wrap_content">
 
                                 <android.support.design.widget.FloatingActionButton
-                                    android:id="@+id/VerEventosE"
+                                    android:id="@+id/EventosE"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:clickable="true"
-                                    android:tint="@android:color/white"
-                                    app:backgroundTint="@color/light_green_400"
-                                    app:elevation="0dp"
-                                    app:fabSize="mini"
-                                    app:rippleColor="@android:color/white"
-                                    app:srcCompat="@drawable/ic_ver_ob" />
-
-                                <TextView
-                                    android:id="@+id/EmpresaVerEventoN"
-                                    android:layout_width="15dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="top|end"
-                                    android:layout_marginTop="0dp"
-                                    android:background="@drawable/ic_button_circle"
-                                    android:text="0"
-                                    android:textAlignment="center"
-                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                                    android:textColor="@color/grey_3"
-                                    android:textSize="9dp"
-                                    android:tint="@color/colorAccentDark" />
-
-                            </FrameLayout>
-
-                            <TextView
-                                android:id="@+id/VerEventosE2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="Ver eventos"
-                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                                android:textColor="@color/grey_40" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <FrameLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-
-                                <android.support.design.widget.FloatingActionButton
-                                    android:id="@+id/AdministrarEventosE"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
                                     android:clickable="true"
                                     android:saveEnabled="false"
                                     android:tint="@android:color/white"
@@ -322,17 +235,16 @@
                                     app:elevation="0dp"
                                     app:fabSize="mini"
                                     app:rippleColor="@android:color/white"
-                                    app:srcCompat="@drawable/ic_admin_ob" />
-
+                                    app:srcCompat="@drawable/ic_events" />
                             </FrameLayout>
 
                             <TextView
-                                android:id="@+id/AdministrarEventosE2"
+                                android:id="@+id/EventosE2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/spacing_medium"
                                 android:saveEnabled="false"
-                                android:text="Administrar Eventos"
+                                android:text="Eventos"
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                                 android:textColor="@color/grey_40" />
 
@@ -350,7 +262,7 @@
                                 android:layout_height="wrap_content">
 
                                 <android.support.design.widget.FloatingActionButton
-                                    android:id="@+id/AgregarEncuestaE"
+                                    android:id="@+id/EncuestasE"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:clickable="true"
@@ -365,114 +277,15 @@
                             </FrameLayout>
 
                             <TextView
-                                android:id="@+id/AgregarEncuestaE2"
+                                android:id="@+id/EncuestasE2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/spacing_medium"
                                 android:saveEnabled="false"
-                                android:text="Agregar Encuesta"
+                                android:text="Encuestas"
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                                 android:textColor="@color/grey_40" />
 
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <FrameLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-
-                                <android.support.design.widget.FloatingActionButton
-                                    android:id="@+id/VerEncuestasE"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:clickable="true"
-                                    android:tint="@android:color/white"
-                                    app:backgroundTint="@color/cyan_800"
-                                    app:elevation="0dp"
-                                    app:fabSize="mini"
-                                    app:rippleColor="@android:color/white"
-                                    app:srcCompat="@drawable/ic_ver_ob" />
-
-                                <TextView
-                                    android:id="@+id/EmpresaVerEncuestaN"
-                                    android:layout_width="15dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="top|end"
-                                    android:layout_marginTop="0dp"
-                                    android:background="@drawable/ic_button_circle"
-                                    android:text="0"
-                                    android:textAlignment="center"
-                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                                    android:textColor="@color/grey_3"
-                                    android:textSize="9dp"
-                                    android:tint="@color/colorAccentDark" />
-
-                            </FrameLayout>
-
-                            <TextView
-                                android:id="@+id/VerEncuestasE2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="Ver encuestas"
-                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                                android:textColor="@color/grey_40" />
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/spacing_mlarge" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <FrameLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-
-                                <android.support.design.widget.FloatingActionButton
-                                    android:id="@+id/AdministrarEncuestasE"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:clickable="true"
-                                    android:saveEnabled="false"
-                                    android:tint="@android:color/white"
-                                    app:backgroundTint="@color/cyan_800"
-                                    app:elevation="0dp"
-                                    app:fabSize="mini"
-                                    app:rippleColor="@android:color/white"
-                                    app:srcCompat="@drawable/ic_admin_ob" />
-                            </FrameLayout>
-
-                            <TextView
-                                android:id="@+id/AdministrarEncuestasE2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/spacing_medium"
-                                android:saveEnabled="false"
-                                android:text="Administrar Encuestas"
-                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                                android:textColor="@color/grey_40" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -483,7 +296,7 @@
                             android:orientation="vertical">
 
                             <android.support.design.widget.FloatingActionButton
-                                android:id="@+id/AgregarAnuncioE"
+                                android:id="@+id/AnunciosE"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:clickable="true"
@@ -496,103 +309,21 @@
                                 app:srcCompat="@drawable/ic_add_ob" />
 
                             <TextView
-                                android:id="@+id/AgregarAnuncioE2"
+                                android:id="@+id/AnunciosE2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/spacing_medium"
                                 android:saveEnabled="false"
-                                android:text="Agregar Anuncio"
+                                android:text="Anuncios"
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                                 android:textColor="@color/grey_40" />
                         </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <FrameLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-
-                                <android.support.design.widget.FloatingActionButton
-                                    android:id="@+id/VerAnuncioE"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:clickable="true"
-                                    android:tint="@android:color/white"
-                                    app:backgroundTint="@color/deep_orange_A400"
-                                    app:elevation="0dp"
-                                    app:fabSize="mini"
-                                    app:rippleColor="@android:color/white"
-                                    app:srcCompat="@drawable/ic_ver_ob" />
-
-                                <TextView
-                                    android:id="@+id/EmpresaVerAnuncioN"
-                                    android:layout_width="15dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="top|end"
-                                    android:layout_marginTop="0dp"
-                                    android:background="@drawable/ic_button_circle"
-                                    android:text="0"
-                                    android:textAlignment="center"
-                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                                    android:textColor="@color/grey_3"
-                                    android:textSize="9dp"
-                                    android:tint="@color/colorAccentDark" />
-
-                            </FrameLayout>
-
-                            <TextView
-                                android:id="@+id/VerAnuncioE2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="Ver anuncios"
-                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                                android:textColor="@color/grey_40" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <android.support.design.widget.FloatingActionButton
-                                android:id="@+id/AdministrarAnunciosE"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:clickable="true"
-                                android:saveEnabled="false"
-                                android:tint="@android:color/white"
-                                app:backgroundTint="@color/deep_orange_A400"
-                                app:elevation="0dp"
-                                app:fabSize="mini"
-                                app:rippleColor="@android:color/white"
-                                app:srcCompat="@drawable/ic_admin_ob" />
-
-                            <TextView
-                                android:id="@+id/AdministrarAnunciosE2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/spacing_medium"
-                                android:saveEnabled="false"
-                                android:text="Administrar Anuncios"
-                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                                android:textColor="@color/grey_40" />
-                        </LinearLayout>
-
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/spacing_mxlarge" />
+                        android:layout_height="@dimen/spacing_mlarge" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -700,6 +431,51 @@
                                 android:text="Estatus del checador"
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                                 android:textColor="@color/grey_40" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_mxlarge" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <android.support.design.widget.FloatingActionButton
+                                android:id="@+id/MiPlanE"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:saveEnabled="false"
+                                android:tint="@android:color/white"
+                                app:backgroundTint="@color/pink_700"
+                                app:elevation="0dp"
+                                app:fabSize="mini"
+                                app:rippleColor="@android:color/white"
+                                app:srcCompat="@drawable/ic_verified_user" />
+
+                            <TextView
+                                android:id="@+id/MiPlanE2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:saveEnabled="false"
+                                android:text="Mi Plan"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                                android:textColor="@color/grey_40" />
+
                         </LinearLayout>
 
                         <LinearLayout

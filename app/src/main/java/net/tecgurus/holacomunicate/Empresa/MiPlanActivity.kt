@@ -1,4 +1,4 @@
-package net.tecgurus.holacomunicate.formularios
+package net.tecgurus.holacomunicate.Empresa
 
 import android.content.Context
 import android.content.Intent
@@ -15,47 +15,50 @@ import com.alejandrolora.finalapp.toast
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
-import net.tecgurus.holacomunicate.R
-import net.tecgurus.holacomunicate.adapter.AdministrarAnuncioAdapter
+import kotlinx.android.synthetic.main.activity_administrar_anuncios.*
+import kotlinx.android.synthetic.main.activity_administrar_anuncios.listView
+import kotlinx.android.synthetic.main.activity_encuesta.*
+import kotlinx.android.synthetic.main.activity_mi_plan.*
 import net.tecgurus.holacomunicate.DashboarActivity
+import net.tecgurus.holacomunicate.R
+import net.tecgurus.holacomunicate.actividadesfragment.GestionActividadesActivity
+import net.tecgurus.holacomunicate.adapter.AdministrarAnuncioAdapter
 import net.tecgurus.holacomunicate.model.Anuncio
 import net.tecgurus.holacomunicate.utils.Tools
-import kotlinx.android.synthetic.main.activity_administrar_anuncios.*
-import kotlinx.android.synthetic.main.activity_encuesta.listView
 import java.util.ArrayList
 
 /**
- * @author Abraham Casas Aguilar
- * admin anuncios
+ * @author
+ * Abraham Casas Aguilar
  */
-class AdministrarAnunciosActivity : AppCompatActivity() {
+class MiPlanActivity : AppCompatActivity() {
 
-    private lateinit var adapter: AdministrarAnuncioAdapter
-    private lateinit var eventoList: List<Anuncio>
-    private var swipeRefreshLayout: SwipeRefreshLayout? = null
     //declare val for save the collection
-    private val anunciosCollection: CollectionReference
+    private val empresasCollection: CollectionReference
 
     //init the val for get the collection the Firebase with cloud firestore
     init {
         FirebaseApp.initializeApp(this)
         //save the collection marks on val maksCollection
-        anunciosCollection = FirebaseFirestore.getInstance().collection("Anuncios")
+        empresasCollection = FirebaseFirestore.getInstance().collection("Empresas")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_administrar_anuncios)
+        setContentView(R.layout.activity_mi_plan)
         initToolbar()
         addMarksListener()
-        swipeRefreshLayout = findViewById(R.id.swipeAdministrarAnuncios)
-        swipeRefreshLayout!!.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener {
-            addMarksListener()
-            swipeRefreshLayout!!.setRefreshing(false);
-        })
+        btmCambiarPlan.setOnClickListener {
+            //aqui vincular a la clase  que mostrar el paquete que debe de adquirir, y ademas abajo de este mismo
+            //los siguientes paquetes subsecuentes que tambie puede adquirir
+            goToActivity<PlanesActivity> {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+
+        }
     }
 
     /**
@@ -64,7 +67,7 @@ class AdministrarAnunciosActivity : AppCompatActivity() {
     private fun addMarksListener() {
         var sharedPreference = getSharedPreferences("shared_login_data", Context.MODE_PRIVATE)
         var id_empresa = sharedPreference.getString("id_empresa", "")
-        anunciosCollection.whereEqualTo("id_empresa", id_empresa).addSnapshotListener { snapshots, error ->
+        empresasCollection.whereEqualTo("id_empresa", id_empresa).addSnapshotListener { snapshots, error ->
             if (error == null) {
                 val changes = snapshots?.documentChanges
                 if (changes != null) {
@@ -80,25 +83,52 @@ class AdministrarAnunciosActivity : AppCompatActivity() {
     private fun listenerDb() {
         var sharedPreference = getSharedPreferences("shared_login_data", Context.MODE_PRIVATE)
         var id_empresa = sharedPreference.getString("id_empresa", "")
-        val consul = anunciosCollection.whereEqualTo("id_empresa", id_empresa)
+        val consul = empresasCollection.whereEqualTo("id_empresa", id_empresa)
         //beggin with consult
         consul.get().addOnCompleteListener(OnCompleteListener<QuerySnapshot> { task ->
             if (task.isSuccessful) {
-                val itemAnuncio = ArrayList<Anuncio>()//lista local de una sola instancia
-                var con = 0
+                var tipo_plan = ""
+                var fecha_vencimiento_plan = ""
+                var plan = ""
+
                 for (document in task.result!!) {
-                    con++
-                    itemAnuncio.add(document.toObject(Anuncio::class.java))//ir agregando los datos a la lista
+                    tipo_plan = document.get("tipo_plan").toString()
+                    fecha_vencimiento_plan = document.get("fecha_vencimiento_plan").toString()
+                    plan = document.get("estatus").toString()
                 }
-                if (con == 0) {
-                    iconDefaultAdminAnuncios.setVisibility(View.VISIBLE)
-                } else {
-                    iconDefaultAdminAnuncios.setVisibility(View.INVISIBLE)
+
+                when (plan) {
+                    "anual" -> {
+                        txtMiPlan.text = "Plan: " + plan
+                        var textoDescripcion = "Tu plan es para : " + tipo_plan + ", el cual vence el " + fecha_vencimiento_plan+" si deseas adquirir otro plan por favor contactanos al correo  gguerrero@gmail.com"
+                        txtDescripcionMiPlan.text = textoDescripcion
+                        btmCambiarPlan.setVisibility(View.INVISIBLE)
+
+                    }
+                    "mensual" -> {
+                        txtMiPlan.text = "Plan: " + plan
+                        var textoDescripcion = "Tu plan es para : " + tipo_plan + ", el cual vence el " + fecha_vencimiento_plan
+                        txtDescripcionMiPlan.text = textoDescripcion
+                        btmCambiarPlan.text = "Adquirir otro plan"
+                    }
+                    "pruebainicial" -> {
+                        txtMiPlan.text = "Plan: " + plan
+                        var textoDescripcion = "Tienes una prueba de 15 dias, terminando esta prueba te sugerimos cambiar de plan "
+                        txtDescripcionMiPlan.text = textoDescripcion
+                        btmCambiarPlan.text = "Adquirir Plan"
+                    }
+                    "gratuita" -> {
+                        txtMiPlan.text = "Plan: " + plan
+                        var textoDescripcion = "Tu plan es gratuito, consulta el plan que se adecua a tus necesidades "
+                        txtDescripcionMiPlan.text = textoDescripcion
+                        btmCambiarPlan.text = "Adquirir Plan"
+                    }
+                    else -> {
+
+                    }
                 }
-                eventoList = itemAnuncio
-                adapter = AdministrarAnuncioAdapter(this, R.layout.list_view_administrar_anuncio, eventoList)
-                //listView.btnCerrarEncuesta
-                listView.adapter = adapter
+
+
             } else {
                 Log.w("saasas", "Error getting documents.", task.exception)
             }
@@ -113,7 +143,7 @@ class AdministrarAnunciosActivity : AppCompatActivity() {
     private fun initToolbar() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
-        supportActionBar!!.title = "Administrar Anuncios"
+        supportActionBar!!.title = "Mi Plan"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         Tools.setSystemBarColor(this)
     }
@@ -139,4 +169,6 @@ class AdministrarAnunciosActivity : AppCompatActivity() {
         }
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
+
+
 }
