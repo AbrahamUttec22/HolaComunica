@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import net.tecgurus.holacomunicate.Empresa.PlanesActivity;
 import net.tecgurus.holacomunicate.R;
 
 import com.paypal.android.sdk.payments.PayPalConfiguration;
@@ -28,15 +29,16 @@ public class PayPalPaymentActivity extends AppCompatActivity {
     //all variables for the paypal
     public static final int PAYPAL_REQUEST_CODE = 7171;
 
-  /*  private static PayPalConfiguration config = new PayPalConfiguration().
-            environment(PayPalConfiguration.ENVIRONMENT_SANDBOX).//aqui puedes configurar el entorno
-            clientId(Config.PAYPAL_CLIENT_ID_SANDBOX);*/
-
     private static PayPalConfiguration config = new PayPalConfiguration().
+            environment(PayPalConfiguration.ENVIRONMENT_SANDBOX).//aqui puedes configurar el entorno
+            clientId(Config.PAYPAL_CLIENT_ID_SANDBOX);
+
+/*    private static PayPalConfiguration config = new PayPalConfiguration().
             environment(PayPalConfiguration.ENVIRONMENT_PRODUCTION).
-            clientId(Config.PAYPAL_CLIENT_ID_PRODUCTION);
+            clientId(Config.PAYPAL_CLIENT_ID_PRODUCTION);*/
 
     private String costo = "";
+    private String plan = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class PayPalPaymentActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             costo = extras.getString("costo_mensual");
+            plan = extras.getString("plan");
         }
 
         Intent intent = new Intent(this, PayPalService.class);
@@ -85,6 +88,7 @@ public class PayPalPaymentActivity extends AppCompatActivity {
                         startActivity(new Intent(this, PayPalDetailsKActivity.class)
                                 .putExtra("PaymentDetails", paymentDetails)
                                 .putExtra("PaymentAmount", costo)
+                                .putExtra("plan", plan)
                         );//activity para mostrar si se efectuo el pago
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -92,7 +96,7 @@ public class PayPalPaymentActivity extends AppCompatActivity {
                 }
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 Toast.makeText(this, "Cancelado", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, PlanesPagoActivity.class));
+                startActivity(new Intent(this, PlanesActivity.class));
                 //startActivity(new Intent(this, DashboarActivity.class);
             }
         } else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
@@ -104,7 +108,7 @@ public class PayPalPaymentActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         stopService(new Intent(this, PayPalService.class));
-        startActivity(new Intent(this, PlanesPagoActivity.class));
+        startActivity(new Intent(this, PlanesActivity.class));
         super.onBackPressed();
     }
 }

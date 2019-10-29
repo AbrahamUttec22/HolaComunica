@@ -279,7 +279,7 @@ class Tab2Fragment : Fragment() {
                                             showPlanCaducado()
                                         }
                                     }
-                                    if (tipo_plan.equals("Usuarios: 5 a 20")) {
+                                    if (tipo_plan.equals("Usuarios: 6 a 20")) {
                                         if (contador >= 5 && contador <= 19) {
                                             signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
                                         } else {
@@ -287,7 +287,7 @@ class Tab2Fragment : Fragment() {
                                             showPlanCaducado()
                                         }
                                     }
-                                    if (tipo_plan.equals("Usuarios: 20 a 50")) {
+                                    if (tipo_plan.equals("Usuarios: 21 a 50")) {
                                         if (contador >= 20 && contador <= 49) {
                                             signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
                                         } else {
@@ -295,7 +295,7 @@ class Tab2Fragment : Fragment() {
                                             showPlanCaducado()
                                         }
                                     }
-                                    if (tipo_plan.equals("Usuarios: 50 a 100")) {
+                                    if (tipo_plan.equals("Usuarios: 51 a 100")) {
                                         if (contador >= 50 && contador <= 99) {
                                             signUpByEmail(email, password, usuario, view)//si cumple con las validaciones
                                         } else {

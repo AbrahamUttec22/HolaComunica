@@ -1,5 +1,4 @@
 package net.tecgurus.holacomunicate
-
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.Dialog
@@ -37,8 +36,6 @@ import net.tecgurus.holacomunicate.formularios.LoginCardOverlap
 import net.tecgurus.holacomunicate.checador.CheckActivity
 import net.tecgurus.holacomunicate.checador.GenerarQrJActivity
 import net.tecgurus.holacomunicate.model.*
-import net.tecgurus.holacomunicate.paypal.PayPalPaymentActivity
-import net.tecgurus.holacomunicate.paypal.PlanesPagoActivity
 import net.tecgurus.holacomunicate.utils.Tools
 import kotlinx.android.synthetic.main.activity_dashboard_empresa.*
 import kotlinx.android.synthetic.main.activity_dashboard_usuario.*
@@ -92,7 +89,6 @@ class DashboarActivity : AppCompatActivity() {
         detalleEventosCollection = FirebaseFirestore.getInstance().collection("detalleEventos")
         detalleEncuestasCollection = FirebaseFirestore.getInstance().collection("detalleEncuestas")
         detalleAnuncioCollection = FirebaseFirestore.getInstance().collection("detalleAnuncios")
-
     }
 
     private var rol2 = ""
@@ -129,10 +125,6 @@ class DashboarActivity : AppCompatActivity() {
                                     PagosEmpresa.setOnClickListener {
                                         showDialogEmpresaBloqueada()
                                     }
-
-                                    PagosEmpresa2.setOnClickListener {
-                                        showDialogEmpresaBloqueada()
-                                    }
                                     //Perfil y usuarios (3) YA TIENE PROGRAMACION REACTIVA
                                     MiPerfilE.setOnClickListener {
                                         showDialogEmpresaBloqueada()
@@ -143,16 +135,6 @@ class DashboarActivity : AppCompatActivity() {
                                     AdministradorActividadesAdminE.setOnClickListener {
                                         showDialogEmpresaBloqueada()
                                     }
-
-                                    EventosE.setOnClickListener {
-                                        showDialogEmpresaBloqueada()
-                                    }
-
-                                    EventosE.setOnClickListener {
-                                        showDialogEmpresaBloqueada()
-                                    }
-
-
                                     //Checador (6) no es necesario programacion reactiva
                                     GenerarQRE.setOnClickListener {
                                         showDialogEmpresaBloqueada()
@@ -164,11 +146,12 @@ class DashboarActivity : AppCompatActivity() {
                                     EncuestasE.setOnClickListener {
                                         showDialogEmpresaBloqueada()
                                     }
-
                                     AnunciosE.setOnClickListener {
                                         showDialogEmpresaBloqueada()
                                     }
-
+                                    EventosE.setOnClickListener {
+                                        showDialogEmpresaBloqueada()
+                                    }
 
                                     MiPlanE.setOnClickListener {
                                         showDialogEmpresaBloqueada()
@@ -191,6 +174,9 @@ class DashboarActivity : AppCompatActivity() {
                                     PanelUsuariosE2.setOnClickListener {
                                         showDialogEmpresaBloqueada()
                                     }
+                                    PagosEmpresa2.setOnClickListener {
+                                        showDialogEmpresaBloqueada()
+                                    }
 
                                     //Checador (6) no es necesario programacion reactiva
                                     GenerarQRE2.setOnClickListener {
@@ -199,21 +185,16 @@ class DashboarActivity : AppCompatActivity() {
                                     EstatusChecadorE2.setOnClickListener {
                                         showDialogEmpresaBloqueada()
                                     }
-
                                     AdministradorActividadesAdminE2.setOnClickListener {
                                         showDialogEmpresaBloqueada()
                                     }
 
-
-
                                     EventosE2.setOnClickListener {
                                         showDialogEmpresaBloqueada()
                                     }
-
                                     EncuestasE2.setOnClickListener {
                                         showDialogEmpresaBloqueada()
                                     }
-
                                     AnunciosE2.setOnClickListener {
                                         showDialogEmpresaBloqueada()
                                     }
@@ -230,19 +211,11 @@ class DashboarActivity : AppCompatActivity() {
                                                 .show()
                                     }
 
-
                                 }
                                 else -> {
                                     when (plan_pago) {
                                         "mensual" -> {
                                             PagosEmpresa.setOnClickListener {
-                                                goToActivity<PagosEmpresaActivity> {
-                                                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                                }
-                                                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-                                            }
-
-                                            PagosEmpresa2.setOnClickListener {
                                                 goToActivity<PagosEmpresaActivity> {
                                                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                                 }
@@ -356,6 +329,12 @@ class DashboarActivity : AppCompatActivity() {
                                                 }
                                                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
 
+                                            }
+                                            PagosEmpresa2.setOnClickListener {
+                                                goToActivity<PagosEmpresaActivity> {
+                                                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                                }
+                                                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                                             }
 
                                             //Checador (6) no es necesario programacion reactiva
@@ -415,13 +394,6 @@ class DashboarActivity : AppCompatActivity() {
                                                 }
                                                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                                             }
-
-                                            PagosEmpresa2.setOnClickListener {
-                                                goToActivity<PagosEmpresaActivity> {
-                                                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                                }
-                                                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-                                            }
                                             //Perfil y usuarios (3) YA TIENE PROGRAMACION REACTIVA
                                             MiPerfilE.setOnClickListener {
                                                 //403 USUARIOS,404 EMPRESA
@@ -467,7 +439,6 @@ class DashboarActivity : AppCompatActivity() {
                                                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
 
                                             }
-
                                             AdministradorActividadesAdminE.setOnClickListener {
                                                 goToActivity<GestionActividadesAActivity> {
                                                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -530,6 +501,12 @@ class DashboarActivity : AppCompatActivity() {
                                                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
 
                                             }
+                                            PagosEmpresa2.setOnClickListener {
+                                                goToActivity<PagosEmpresaActivity> {
+                                                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                                }
+                                                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+                                            }
 
                                             //Checador (6) no es necesario programacion reactiva
                                             GenerarQRE2.setOnClickListener {
@@ -547,7 +524,6 @@ class DashboarActivity : AppCompatActivity() {
                                                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
 
                                             }
-
                                             AdministradorActividadesAdminE2.setOnClickListener {
                                                 goToActivity<GestionActividadesAActivity> {
                                                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -761,13 +737,6 @@ class DashboarActivity : AppCompatActivity() {
                                                 }
                                                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                                             }
-
-                                            PagosEmpresa2.setOnClickListener {
-                                                goToActivity<PagosEmpresaActivity> {
-                                                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                                }
-                                                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-                                            }
                                             //Perfil y usuarios (3) YA TIENE PROGRAMACION REACTIVA
                                             MiPerfilE.setOnClickListener {
                                                 showDialog()
@@ -826,6 +795,12 @@ class DashboarActivity : AppCompatActivity() {
                                             PanelUsuariosE2.setOnClickListener {
                                                 showDialog()
                                             }
+                                            PagosEmpresa2.setOnClickListener {
+                                                goToActivity<PagosEmpresaActivity> {
+                                                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                                }
+                                                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+                                            }
 
                                             //Checador (6) no es necesario programacion reactiva
                                             GenerarQRE2.setOnClickListener {
@@ -867,7 +842,6 @@ class DashboarActivity : AppCompatActivity() {
                                                 }).setNegativeButton("No", DialogInterface.OnClickListener { dialog, id -> dialog.cancel() })
                                                         .show()
                                             }
-
                                         }
                                         else -> {
                                         }
@@ -1608,16 +1582,12 @@ class DashboarActivity : AppCompatActivity() {
                                     EventosA.setOnClickListener {
                                         showDialogAdministradorBloqueada()
                                     }
-
                                     EncuestasA.setOnClickListener {
                                         showDialogAdministradorBloqueada()
                                     }
-
                                     AnunciosA.setOnClickListener {
                                         showDialogAdministradorBloqueada()
                                     }
-
-
                                     CerrarSesionA.setOnClickListener {
                                         val builder = AlertDialog.Builder(this)
                                         builder.setMessage("Estas seguro de cerrar sesión?").setPositiveButton("Si", DialogInterface.OnClickListener { dialog, id ->
@@ -1655,15 +1625,12 @@ class DashboarActivity : AppCompatActivity() {
                                     EventosA2.setOnClickListener {
                                         showDialogAdministradorBloqueada()
                                     }
-
                                     EncuestasA2.setOnClickListener {
                                         showDialogAdministradorBloqueada()
                                     }
-
                                     AnunciosA2.setOnClickListener {
                                         showDialogAdministradorBloqueada()
                                     }
-
 
                                     CerrarSesionA2.setOnClickListener {
                                         val builder = AlertDialog.Builder(this)
@@ -1751,16 +1718,12 @@ class DashboarActivity : AppCompatActivity() {
                                             EventosA.setOnClickListener {
                                                 showDialogEventos()
                                             }
-
                                             EncuestasA.setOnClickListener {
                                                 showDialogAdministradorBloqueada()
                                             }
-
-
                                             AnunciosA.setOnClickListener {
                                                 showDialogAdministradorBloqueada()
                                             }
-
 
                                             CerrarSesionA.setOnClickListener {
                                                 val builder = AlertDialog.Builder(this)
@@ -1844,16 +1807,12 @@ class DashboarActivity : AppCompatActivity() {
                                             EventosA2.setOnClickListener {
                                                 showDialogEventos()
                                             }
-
                                             EncuestasA2.setOnClickListener {
                                                 showDialogAnuncios()
                                             }
-
-
                                             AnunciosA2.setOnClickListener {
                                                 showDialogAdministradorBloqueada()
                                             }
-
 
                                             CerrarSesionA2.setOnClickListener {
                                                 val builder = AlertDialog.Builder(this)
@@ -1939,11 +1898,9 @@ class DashboarActivity : AppCompatActivity() {
                                             EventosA.setOnClickListener {
                                                 showDialogEventos()
                                             }
-
                                             EncuestasA.setOnClickListener {
                                                 showDialogEncuestas()
                                             }
-
                                             AnunciosA.setOnClickListener {
                                                 showDialogAnuncios()
                                             }
@@ -2031,15 +1988,12 @@ class DashboarActivity : AppCompatActivity() {
                                             EventosA2.setOnClickListener {
                                                 showDialogEventos()
                                             }
-
                                             EncuestasA2.setOnClickListener {
                                                 showDialogEncuestas()
                                             }
-
                                             AnunciosA2.setOnClickListener {
                                                 showDialogAnuncios()
                                             }
-
 
                                             CerrarSesionA2.setOnClickListener {
                                                 val builder = AlertDialog.Builder(this)
@@ -2125,12 +2079,9 @@ class DashboarActivity : AppCompatActivity() {
                                             EventosA.setOnClickListener {
                                                 showDialogEventos()
                                             }
-
-
                                             EncuestasA.setOnClickListener {
                                                 showDialogEncuestas()
                                             }
-
                                             AnunciosA.setOnClickListener {
                                                 showDialogAnuncios()
                                             }
@@ -2217,11 +2168,9 @@ class DashboarActivity : AppCompatActivity() {
                                             EventosA2.setOnClickListener {
                                                 showDialogEventos()
                                             }
-
                                             EncuestasA2.setOnClickListener {
                                                 showDialogEncuestas()
                                             }
-
                                             AnunciosA2.setOnClickListener {
                                                 showDialogAnuncios()
                                             }
@@ -2277,11 +2226,9 @@ class DashboarActivity : AppCompatActivity() {
                                             EventosA.setOnClickListener {
                                                 showDialogInfoPagoAdministrador()
                                             }
-
                                             EncuestasA.setOnClickListener {
                                                 showDialogInfoPagoAdministrador()
                                             }
-
                                             AnunciosA.setOnClickListener {
                                                 showDialogInfoPagoAdministrador()
                                             }
@@ -2335,17 +2282,12 @@ class DashboarActivity : AppCompatActivity() {
                                             EventosA2.setOnClickListener {
                                                 showDialogInfoPagoAdministrador()
                                             }
-
                                             EncuestasA2.setOnClickListener {
                                                 showDialogInfoPagoAdministrador()
                                             }
-
-
                                             AnunciosA2.setOnClickListener {
                                                 showDialogInfoPagoAdministrador()
                                             }
-
-
                                             CerrarSesionA2.setOnClickListener {
                                                 val builder = AlertDialog.Builder(this)
                                                 builder.setMessage("Estas seguro de cerrar sesión?").setPositiveButton("Si", DialogInterface.OnClickListener { dialog, id ->

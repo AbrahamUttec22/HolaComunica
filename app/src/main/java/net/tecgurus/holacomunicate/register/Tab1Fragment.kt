@@ -116,6 +116,7 @@ class Tab1Fragment : Fragment(), View.OnClickListener {
                         empresa.foto = imag
                         empresa.fecha_vencimiento_plan = fecha_vencimiento
                         empresa.id_empresa = ""
+                        empresa.tipo_plan = "Usuarios: 1 a 5"
                         empresa.estatus = "pruebainicial"
 
                         //first save the user on authentication firebase, after that save the user on cloud firestore

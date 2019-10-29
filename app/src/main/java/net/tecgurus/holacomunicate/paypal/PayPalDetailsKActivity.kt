@@ -56,7 +56,10 @@ class PayPalDetailsKActivity : AppCompatActivity() {
         val intent = intent
         try {
             val jsonObject = JSONObject(intent.getStringExtra("PaymentDetails"))
-            showDetails(jsonObject.getJSONObject("response"), intent.getStringExtra("PaymentAmount"))
+            showDetails(jsonObject.getJSONObject("response"),
+                    intent.getStringExtra("PaymentAmount"),
+                    intent.getStringExtra("plan"))//plan
+
         } catch (e: JSONException) {
             e.printStackTrace()
         }
@@ -66,7 +69,7 @@ class PayPalDetailsKActivity : AppCompatActivity() {
      * @param response
      * @param paymentAmount
      */
-    private fun showDetails(response: JSONObject, paymentAmount: String) {
+    private fun showDetails(response: JSONObject, paymentAmount: String, plann: String) {
         val c = Calendar.getInstance()
         val df = SimpleDateFormat("dd/MM/yyyy")
         val fecha = df.format(c.getTime()).toString()
@@ -87,7 +90,7 @@ class PayPalDetailsKActivity : AppCompatActivity() {
             val id_pago = response.getString("id")
             val estatus_pago = response.getString("state")
             Log.w("DETALLESPAO", "" + response.toString())
-            updateAccount(fecha, hora, paymentAmount, estatus_pago, id_pago, fecha_vencimiento)
+            updateAccount(fecha, hora, paymentAmount, estatus_pago, id_pago, fecha_vencimiento, plann)
             txtFechaPago.setText(fecha)
             txtHoraPago.setText(hora)
             txtMonto.setText("$" + paymentAmount + " MXN")
@@ -112,7 +115,13 @@ class PayPalDetailsKActivity : AppCompatActivity() {
      * @param id_pago_paypal
      * @param fecha_vencimiento
      */
-    private fun updateAccount(fecha: String, hora: String, monto: String, estatus: String, id_pago_paypal: String, fecha_vencimiento: String) {
+    private fun updateAccount(fecha: String,
+                              hora: String,
+                              monto: String,
+                              estatus: String,
+                              id_pago_paypal: String,
+                              fecha_vencimiento: String,
+                              plann: String) {
         var email_mio = mAuth.currentUser!!.email.toString()
 
         val consultaUsuario = empresaCollection.whereEqualTo("correo", email_mio)
@@ -128,7 +137,7 @@ class PayPalDetailsKActivity : AppCompatActivity() {
                     nombre = document.get("nombre").toString()
                 }
                 empresaCollection.document(id_document).update("estatus", "mensual",
-                        "fecha_vencimiento_plan", fecha_vencimiento).addOnSuccessListener {
+                        "fecha_vencimiento_plan", fecha_vencimiento, "tipo_plan", plann).addOnSuccessListener {
                 }.addOnFailureListener {
                 }
 

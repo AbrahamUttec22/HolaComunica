@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbarPlanes"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/red_700"
@@ -114,7 +114,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Plan Usuarios 5 a 20"
+                        android:text="Plan Usuarios 6 a 20"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="@color/grey_90"
                         app:fontFamily="sans-serif-medium" />
@@ -175,7 +175,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Plan Usuarios 20 a 50"
+                        android:text="Plan Usuarios 21 a 50"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="@color/grey_90"
                         app:fontFamily="sans-serif-medium" />
@@ -237,7 +237,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Plan Usuarios 50 a 100"
+                        android:text="Plan Usuarios 51 a 100"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="@color/grey_90"
                         app:fontFamily="sans-serif-medium" />

@@ -29,11 +29,10 @@
             app:civ_border_width="2dp" />
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/titlePago"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_large"
-            android:text="Hola! Comunícate"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
@@ -41,6 +40,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/spacing_middle" />
+
 
 
         <android.support.v7.widget.AppCompatButton

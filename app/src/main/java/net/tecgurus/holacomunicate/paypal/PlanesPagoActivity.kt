@@ -6,19 +6,16 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.alejandrolora.finalapp.goToActivity
-import com.alejandrolora.finalapp.toast
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import net.tecgurus.holacomunicate.R
-import net.tecgurus.holacomunicate.DashboarActivity
 import kotlinx.android.synthetic.main.activity_planes_pago.*
-import android.support.v4.app.SupportActivity
-import android.support.v4.app.SupportActivity.ExtraData
 import android.support.v7.app.AlertDialog
 import android.widget.TextView
+import net.tecgurus.holacomunicate.Empresa.PlanesActivity
 
 
 /**
@@ -31,7 +28,7 @@ class PlanesPagoActivity : AppCompatActivity() {
     private val userCollection: CollectionReference
     private val costosCollection: CollectionReference
     lateinit var dialog: AlertDialog
-    private var plan_adquirir=""
+    private var plan_adquirir = ""
 
     //init the val for get the collection the Firebase with cloud firestore
     init {
@@ -55,7 +52,6 @@ class PlanesPagoActivity : AppCompatActivity() {
         message.text = ""
         builder.setView(dialogView)
 
-
         var sharedPreferencet = getSharedPreferences("shared_login_data", Context.MODE_PRIVATE)
         var id_empresa = sharedPreferencet.getString("id_empresa", "")
         val empleado = userCollection.whereEqualTo("id_empresa", id_empresa)
@@ -65,8 +61,9 @@ class PlanesPagoActivity : AppCompatActivity() {
                 for (document in task.result!!) {
                 }
 
-                if (plan_adquirir.equals( "Usuarios: 1 a 5")) {//ready
+                if (plan_adquirir.equals("Usuarios: 1 a 5")) {//ready
                     var plan = "Usuarios: 1 a 5"
+                    titlePago.text = plan
                     val costoConsultaMensual = costosCollection.whereEqualTo("tipo_plan", "mensual")
                             .whereEqualTo("plan", plan)
                     //beggin with consult
@@ -98,42 +95,9 @@ class PlanesPagoActivity : AppCompatActivity() {
                             Log.w("saasas", "Error getting documents.", task.exception)
                         }
                     })//end for expression lambdas this very cool
-                } else if (plan_adquirir.equals( "Usuarios: 5 a 20")) {
-                    var plan = "Usuarios: 5 a 20"
-                    val costoConsultaMensual = costosCollection.whereEqualTo("tipo_plan", "mensual")
-                            .whereEqualTo("plan", plan)
-                    //beggin with consult
-                    costoConsultaMensual.get().addOnCompleteListener(OnCompleteListener<QuerySnapshot> { task ->
-                        if (task.isSuccessful) {
-                            var precio = ""
-                            for (document in task.result!!) {
-                                precio = document.get("costo").toString()
-                            }
-                            precioMensualOriginal.setText(precio)
-                            precioMensual.setText("Mensualidad: $" + precioMensualOriginal.text.toString() + " MXN")
-                        } else {
-                            Log.w("saasas", "Error getting documents.", task.exception)
-                        }
-                    })//end for expression lambdas this very cool
-
-                    val costoConsultaAnual = costosCollection.whereEqualTo("tipo_plan", "anual")
-                            .whereEqualTo("plan", plan)
-                    //beggin with consult
-                    costoConsultaAnual.get().addOnCompleteListener(OnCompleteListener<QuerySnapshot> { task ->
-                        if (task.isSuccessful) {
-                            var precio = ""
-                            for (document in task.result!!) {
-                                precio = document.get("costo").toString()
-                            }
-                            precioAnualOriginal.setText(precio)
-                            precioAnual.setText("Anualidad: $" + precioAnualOriginal.text.toString() + " MXN")
-                        } else {
-                            Log.w("saasas", "Error getting documents.", task.exception)
-                        }
-                    })//end for expression lambdas this very cool
-
-                } else if (plan_adquirir.equals( "Usuarios: 20 a 50")) {
-                    var plan = "Usuarios: 20 a 50"
+                } else if (plan_adquirir.equals("Usuarios: 6 a 20")) {
+                    var plan = "Usuarios: 6 a 20"
+                    titlePago.text = plan
                     val costoConsultaMensual = costosCollection.whereEqualTo("tipo_plan", "mensual")
                             .whereEqualTo("plan", plan)
                     //beggin with consult
@@ -166,8 +130,44 @@ class PlanesPagoActivity : AppCompatActivity() {
                         }
                     })//end for expression lambdas this very cool
 
-                } else if (plan_adquirir.equals( "Usuarios: 50 a 100")) {
-                    var plan = "Usuarios: 50 a 100"
+                } else if (plan_adquirir.equals("Usuarios: 21 a 50")) {
+                    var plan = "Usuarios: 21 a 50"
+                    titlePago.text = plan
+                    val costoConsultaMensual = costosCollection.whereEqualTo("tipo_plan", "mensual")
+                            .whereEqualTo("plan", plan)
+                    //beggin with consult
+                    costoConsultaMensual.get().addOnCompleteListener(OnCompleteListener<QuerySnapshot> { task ->
+                        if (task.isSuccessful) {
+                            var precio = ""
+                            for (document in task.result!!) {
+                                precio = document.get("costo").toString()
+                            }
+                            precioMensualOriginal.setText(precio)
+                            precioMensual.setText("Mensualidad: $" + precioMensualOriginal.text.toString() + " MXN")
+                        } else {
+                            Log.w("saasas", "Error getting documents.", task.exception)
+                        }
+                    })//end for expression lambdas this very cool
+
+                    val costoConsultaAnual = costosCollection.whereEqualTo("tipo_plan", "anual")
+                            .whereEqualTo("plan", plan)
+                    //beggin with consult
+                    costoConsultaAnual.get().addOnCompleteListener(OnCompleteListener<QuerySnapshot> { task ->
+                        if (task.isSuccessful) {
+                            var precio = ""
+                            for (document in task.result!!) {
+                                precio = document.get("costo").toString()
+                            }
+                            precioAnualOriginal.setText(precio)
+                            precioAnual.setText("Anualidad: $" + precioAnualOriginal.text.toString() + " MXN")
+                        } else {
+                            Log.w("saasas", "Error getting documents.", task.exception)
+                        }
+                    })//end for expression lambdas this very cool
+
+                } else if (plan_adquirir.equals("Usuarios: 51 a 100")) {
+                    var plan = "Usuarios: 51 a 100"
+                    titlePago.text = plan
                     val costoConsultaMensual = costosCollection.whereEqualTo("tipo_plan", "mensual")
                             .whereEqualTo("plan", plan)
                     //beggin with consult
@@ -216,33 +216,28 @@ class PlanesPagoActivity : AppCompatActivity() {
 
         btn_Mensual.setOnClickListener {
             var costo_mensual = precioMensualOriginal.text.toString()
+            var plan = titlePago.text.toString()
+
             if (!costo_mensual.isEmpty()) {
                 val i = Intent(this, PayPalPaymentActivity::class.java)
                 i.putExtra("costo_mensual", costo_mensual)
+                i.putExtra("plan", plan)
                 startActivity(i)
-
-                /*      goToActivity<PayPalPaymentActivity> {
-                          flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                      }
-                      overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)*/
             }
 
         }
         btn_Anualidad.setOnClickListener {
             var costo_anual = precioAnualOriginal.text.toString()
+            var plan = titlePago.text.toString()
             if (!costo_anual.isEmpty()) {
                 val i = Intent(this, PayPalPaymentAnualidadActivity::class.java)
                 i.putExtra("costo_anual", costo_anual)
+                i.putExtra("plan", plan)
                 startActivity(i)
-
-                /*     goToActivity<PayPalPaymentAnualidadActivity> {
-                         flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                     }
-                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)*/
             }
         }
         txtCancelar.setOnClickListener {
-            goToActivity<DashboarActivity> {
+            goToActivity<PlanesActivity> {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             }
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
@@ -252,7 +247,7 @@ class PlanesPagoActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        goToActivity<DashboarActivity> {
+        goToActivity<PlanesActivity> {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
